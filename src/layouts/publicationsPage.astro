@@ -11,6 +11,7 @@ import "@fontsource/inter/variable.css";
 import JumpToContent from "../components/accessibility/jumpToContent.astro";
 import * as CONFIG from "../config";
 
+import HeadSeo from "../components/headSeo.astro";
 import type { IPublication } from "../components/publications/publication.js";
 import PublicationCard from "../components/publications/publicationCard.astro";
 import { publicationsByYear } from "../components/publications/publications";
@@ -32,6 +33,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
 <html dir={"ltr"} lang={"en-us"} class="initial">
   <head>
     <HeadCommon />
+    <HeadSeo type="website" />
     <title>Publications • {CONFIG.SITE.title}</title>
     <script is:inline>
       const html = document.documentElement;
