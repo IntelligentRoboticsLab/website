@@ -1,0 +1,160 @@
+---
+import clsx from "clsx";
+
+import HeadCommon from "../components/headCommon.astro";
+import Navbar from "../components/navigation/navbar.astro";
+import "../styles/accessibility.css";
+import "../styles/algolia/style.css";
+import "../styles/global.css";
+
+import "@fontsource/inter/variable.css";
+import JumpToContent from "../components/accessibility/jumpToContent.astro";
+import * as CONFIG from "../config";
+
+import type { IPublication } from "../components/publications/publication.js";
+import PublicationCard from "../components/publications/publicationCard.astro";
+import { publicationsByYear } from "../components/publications/publications";
+import TagBrowser from "../components/publications/tagBrowser.astro";
+
+const tags = Array.from(
+  new Set(
+    publicationsByYear
+      .map((pubYear) => pubYear.publications.map((pub) => pub.tags).flat())
+      .flat()
+  )
+).sort((a, b) => (a > b ? 1 : -1));
+
+const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
+  .split(" ")
+  .filter((tag) => tag !== "");
+---
+
+<html dir={"ltr"} lang={"en-us"} class="initial">
+  <head>
+    <HeadCommon />
+    <title>Publications • {CONFIG.SITE.title}</title>
+    <script is:inline>
+      const html = document.documentElement;
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        html.classList.remove("dark");
+        html.classList.add("light");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+      }
+    </script>
+  </head>
+
+  <body
+    class="flex min-h-screen flex-col items-center bg-default transition-colors duration-300"
+  >
+    <JumpToContent />
+    <div
+      class="sticky top-0 z-40 max-h-full w-full bg-default transition-colors duration-300"
+    >
+      <Navbar />
+    </div>
+    <main
+      class="grid w-full max-w-7xl flex-1 grid-cols-1 gap-4 md:grid-cols-[250px_auto] lg:grid-cols-[250px_auto_250px]"
+    >
+      <nav
+        id="grid-left"
+        title="Site Navigation"
+        class="t3-scrollbar sticky top-24 col-span-1 hidden h-auto max-h-[calc(100vh-80px)] w-full flex-col justify-start overflow-y-auto bg-default pt-4 transition-colors duration-300 md:top-32 md:flex md:max-h-[calc(100vh-96px)] md:pt-0 md:[margin-inline-start:16px]"
+      >
+        <TagBrowser tags={tags} selectedTags={selectedTags} />
+      </nav>
+
+      <div
+        class="col-span-1 flex min-h-full w-full px-8 flex-col pt-5"
+        id="content"
+      >
+        {
+          publicationsByYear.map((pubYear) => {
+            return (
+              <div class="fit-content">
+                {
+                  <h1
+                    class={clsx(
+                      "text-dnt-orange-900 dark:text-dnt-orange-50 text-3xl mb-2 font-semibold",
+                      {
+                        hidden:
+                          pubYear.publications.filter((pub) => {
+                            return (
+                              selectedTags.length == 0 ||
+                              pub.tags.some((tag) => selectedTags.includes(tag))
+                            );
+                          }).length == 0,
+                      }
+                    )}
+                  >
+                    {pubYear.year}
+                  </h1>
+                }
+                <div class="flex flex-row">
+                  <div class="mr-4" />
+                  <div class="flex flex-col">
+                    {pubYear.publications
+                      ?.filter((pub) => {
+                        return (
+                          selectedTags.length == 0 ||
+                          pub.tags.some((tag) => selectedTags.includes(tag))
+                        );
+                      })
+                      .map((pub) => {
+                        return (
+                          <div class="mb-4">
+                            <PublicationCard
+                              year={pubYear.year}
+                              publication={pub as IPublication}
+                            />
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
+              </div>
+            );
+          })
+        }
+        <div class="py-32"></div>
+      </div>
+      <div class="md:[margin-inline-end:16px]">
+        <aside
+          id="grid-right"
+          title="Table of Contents"
+          dir="ltr"
+          class="t3-scrollbar sticky top-32 col-span-1 hidden h-auto max-h-[calc(100vh-100px)] w-full [padding-inline-end:16px] lg:mb-12 lg:flex lg:flex-col lg:justify-start"
+        >
+        </aside>
+      </div>
+    </main>
+    <script defer>
+      const matches = document.querySelectorAll("[data-heading-link]");
+      if (matches && matches.length) {
+        matches.forEach((elem) => {
+          const href = elem.href;
+          elem.addEventListener(
+            "click",
+            () => {
+              navigator.clipboard.writeText(href);
+            },
+            false
+          );
+        });
+      }
+    </script>
+  </body>
+</html>

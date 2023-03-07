@@ -1,0 +1,91 @@
+---
+import clsx from "clsx";
+
+export interface Props {
+  tags: string[];
+  selectedTags: string[];
+}
+
+const { tags, selectedTags } = Astro.props;
+// const isLanding = checkLanding(currentPage) || !!isNotFound;
+// const hasTrailing = currentPage.endsWith("/");
+// const currentPageMatch = currentPage.slice(
+//   1,
+//   hasTrailing ? -1 : currentPage.length
+// );
+// const isRtl = getIsRtlFromUrl(currentPage);
+
+function getNewTagsUrl(tags: string[], tag: string): string {
+  let index = tags.indexOf(tag);
+  let localTags = Object.assign([], tags);
+  if (index !== -1) {
+    localTags.splice(index, 1);
+  } else {
+    localTags.push(tag);
+  }
+
+  return localTags.length > 0
+    ? "publications?tags=" +
+        localTags.sort((a, b) => (a > b ? -1 : 1)).join("+")
+    : "publications";
+}
+
+const sidebar = {
+  Tags: tags.map((tag) => {
+    return {
+      text: tag,
+      link: getNewTagsUrl(selectedTags, tag),
+    };
+  }),
+};
+---
+
+<div class="mx-auto ml--40 mb-6 w-full px-6 md:ml-0 md:hidden md:px-8">
+  <!-- <Search isLanding={isLanding} client:idle /> -->
+</div>
+<div
+  dir="ltr"
+  class="t3-scrollbar h-full w-full bg-default transition-colors duration-300 lg:mb-12"
+>
+  <ul
+    dir={false ? "rtl" : "ltr"}
+    class="px-4 pb-28 text-slate-900 dark:text-dnt-orange-50 md:pb-0"
+  >
+    {
+      Object.entries(sidebar).map(([_unused, children]) => (
+        <li>
+          <div>
+            <h2
+              class="pb-2 text-xl font-semibold transition-colors duration-300 sm:text-lg"
+            >
+              Filter tags:
+            </h2>
+            <ul class="mb-2">
+              {children.map((child) => {
+                const url = Astro.site?.pathname + child.link;
+                const isActive = selectedTags.includes(child.text);
+                return (
+                  <li>
+                    <a
+                      href={url}
+                      aria-current={isActive ? "page" : false}
+                      class={clsx([
+                        "text-md text-dnt-orange-800 hover:border-dnt-orange-300/50 hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-100 block rounded-r-lg py-2 transition-colors [padding-inline-start:16px]",
+                        isActive
+                          ? "border-dnt-orange-300 bg-dnt-orange-300/30 dark:bg-dnt-orange-300/20 font-medium"
+                          : "border-dnt-orange-300/20",
+                        false ? "border-r-2" : "border-l-2",
+                      ])}
+                    >
+                      <span>{child.text}</span>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</div>

@@ -1,0 +1,278 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Design System Theming */
+  html {
+    --color-default: 250 245 240;
+    --color-neutral: 58 44 29;
+    --color-primary: 230 116 16;
+    --color-secondary: 248 144 58;
+    --color-accent: 244 179 113;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
+    --color-foreground: 42 27 15;
+    --color-background: 236 231 228;
+
+    --astro-code-color-text: #351f13;
+    --astro-code-color-background: rgb(245, 240, 235);
+    --astro-code-token-constant: #ff6a00;
+    --astro-code-token-string: #ffb61a;
+    --astro-code-token-comment: #766860;
+    --astro-code-token-keyword: #e9208b;
+    --astro-code-token-parameter: #77dc04;
+    --astro-code-token-function: #ca7002;
+    --astro-code-token-string-expression: #f38806;
+    --astro-code-token-punctuation: #00dd97;
+    --astro-code-token-link: #eea700;
+
+    @apply bg-default text-slate-900;
+  }
+
+  html.dark {
+    --color-default: 25 25 25;
+    --color-neutral: 58 44 29;
+    --color-primary: 230 116 16;
+    --color-secondary: 248 144 58;
+    --color-accent: 244 179 113;
+    --color-warning: 244 193 82;
+    --color-error: 251 111 132;
+    --color-success: 43 212 189;
+    --color-info: 12 166 233;
+    --color-foreground: 236 231 228;
+    --color-background: 42 27 15;
+
+    --astro-code-color-text: #ffddc6;
+    --astro-code-color-background: rgb(30 30 30);
+    --astro-code-token-constant: #ff6a00;
+    --astro-code-token-string: #ffb61a;
+    --astro-code-token-comment: #9e9894;
+    --astro-code-token-keyword: #e9208b;
+    --astro-code-token-parameter: #77dc04;
+    --astro-code-token-function: #ff8c00;
+    --astro-code-token-string-expression: #f3b713;
+    --astro-code-token-punctuation: #00dd97;
+    --astro-code-token-link: #eea700;
+
+    @apply bg-default text-dnt-orange-100;
+  }
+
+  html {
+    @apply scroll-smooth accent-primary scrollbar-thin scrollbar-track-transparent scrollbar-thumb-dnt-orange-300 dark:scrollbar-track-transparent dark:scrollbar-thumb-dnt-orange-300;
+  }
+
+  /* Typewriter */
+  .cursor::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 100%;
+    background-color: #fff;
+    animation: cursor 0.6s linear infinite alternate;
+    will-change: opacity;
+  }
+
+  @keyframes cursor {
+    0%,
+    40% {
+      opacity: 1;
+    }
+
+    60%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Base stylings */
+  *:focus:not(:focus-visible) {
+    outline: none;
+  }
+
+  a:hover,
+  a:focus {
+    text-decoration: underline;
+  }
+
+  a:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
+  button:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+
+  article > section :is(ul, ol) > * + * {
+    margin-top: 0.75rem;
+  }
+
+  article > section li > :is(p, pre, blockquote):not(:first-child) {
+    margin-top: 1rem;
+  }
+
+  article > section :is(ul, ol) {
+    padding-inline-start: 1em;
+  }
+
+  article > section nav :is(ul, ol) {
+    padding-inline-start: inherit;
+  }
+
+  td,
+  th {
+    padding: 6px;
+    text-align: inline-start;
+  }
+
+  .t3-scrollbar {
+    @apply scrollbar-thin scrollbar-track-slate-300 scrollbar-thumb-dnt-orange-300 dark:scrollbar-track-dnt-orange-200/10 dark:scrollbar-thumb-dnt-orange-300;
+  }
+
+  .t3-scrollbar::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+  }
+
+  .line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  h1[id],
+  h2[id],
+  h3[id],
+  h4[id],
+  h5[id],
+  #content {
+    @apply scroll-mt-36 lg:scroll-mt-24;
+  }
+
+  /* only at less than md */
+  @media (max-width: 767.5px) {
+    .mobile-sidebar-toggle {
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    .mobile-sidebar-toggle #grid-left {
+      z-index: 20;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+
+  /* Markdown Styling */
+  .markdown {
+    @apply flex w-full flex-col items-start justify-start px-4 leading-relaxed text-slate-900 selection:bg-dnt-orange-200 selection:text-dnt-orange-500 dark:text-dnt-orange-100 dark:selection:bg-dnt-orange-100 dark:selection:text-slate-900;
+  }
+  .markdown h1 {
+    @apply mt-8 mb-4 text-3xl font-extrabold;
+  }
+  .markdown h2 {
+    @apply mt-8 mb-4 text-2xl font-semibold;
+  }
+  .markdown h3 {
+    @apply mt-4 mb-2 text-xl font-semibold;
+  }
+  .markdown h4 {
+    @apply mt-2 mb-1 text-base font-medium;
+  }
+  .markdown li {
+    @apply list-disc text-slate-900 dark:text-white;
+  }
+  .markdown ol > li {
+    @apply mb-2 list-decimal;
+  }
+  .markdown p {
+    @apply mb-4 dark:text-white;
+  }
+  .markdown a > p {
+    @apply mb-0 text-sm;
+  }
+  .markdown a:not(.heading-link--hidden---effects) {
+    @apply text-dnt-orange-500 underline decoration-slate-500 
+          decoration-dotted underline-offset-2  
+          hover:text-dnt-orange-700 dark:text-dnt-orange-200 
+          dark:decoration-dnt-orange-200 dark:hover:text-dnt-orange-300;
+  }
+
+  :is([dir='rtl']) .markdown a[rel~="noreferrer"] > span {
+    @apply -scale-x-100 inline-flex;
+}
+
+  .markdown code {
+    @apply break-words [direction:ltr] [unicode-bidi:embed] lg:break-normal;
+  }
+
+  .markdown code:not(.markdown pre code) {
+    @apply rounded border border-dnt-orange-300 bg-dnt-orange-200/40 px-0.5 py-[0.5px]
+    dark:border-dnt-orange-400/30 dark:bg-dnt-orange-400/20;
+  }
+
+  .markdown .remark-code-title {
+    @apply z-10 -mb-1 mt-3 w-full rounded-t-md border border-dnt-orange-300/80 bg-[var(--astro-code-color-background)] px-2 py-1 font-mono text-stone-900 dark:text-stone-100;
+  }
+
+  .markdown pre {
+    @apply mx-auto mb-3 rounded border border-dnt-orange-300/80 p-2 pl-3 font-mono shadow-xl sm:pt-2 bg-default;
+  }
+
+  .markdown ol {
+    @apply w-full;
+  }
+
+  .markdown details {
+    @apply mt-2 w-full rounded-md border border-dnt-orange-300/80 bg-[#272822] px-3 transition-all duration-300 ease-in-out;
+  }
+  .markdown details[open] {
+    @apply bg-dnt-orange-200/10;
+  }
+  .markdown details pre {
+    @apply border-0 shadow-none;
+  }
+  .markdown details > summary {
+    @apply cursor-pointer text-[#A6ACCD];
+  }
+  .markdown summary {
+    @apply py-3;
+  }
+
+  .markdown p > img {
+    @apply mt-8 text-sm;
+  }
+  .markdown table > tbody > tr > td > a {
+    overflow-wrap: anywhere;
+  }
+  .markdown table {
+    @apply max-w-full table-fixed;
+  }
+  .markdown table > tbody > tr > td {
+    @apply align-top;
+  }
+  .markdown blockquote a {
+    @apply text-slate-900 dark:text-dnt-orange-50;
+  }
+  .DocSearch-SearchBar {
+    @apply my-3 rounded-md bg-orange-400 p-2 text-sm;
+  }
+
+  #DocSearch-SearchBar {
+    @apply my-3 rounded-md bg-orange-400 p-2 text-sm;
+  }
+
+  .embed {
+    @apply relative mb-2 h-0 w-full pb-[56.25%];
+  }
+
+  .embed iframe {
+    @apply absolute top-0 left-0 h-full w-full;
+  }
+}

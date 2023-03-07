@@ -1,0 +1,20 @@
+---
+import type { IPublication } from './publication';
+
+export interface Props {
+  year: string;
+  publication: IPublication;
+}
+
+const { publication } = Astro.props;
+---
+
+<div class="text-dnt-orange-500 dark:text-dnt-orange-300">
+  <div class="flex flex-col">
+    <a href={`${publication.file}`} download class="text-xl font-semibold hover:decoration-dotted dark:hover:text-dnt-orange-400 hover:text-dnt-orange-700 ">
+      {publication.title}
+    </a>
+    <p class="text-dnt-orange-700 dark:text-dnt-orange-200 text-s mb-3">{publication.authors.join(", ")}</p>
+    <p class="text-dnt-orange-900 dark:text-dnt-orange-100 text-md">Tags: {publication.tags.join(", ")}</p>
+  </div>
+</div>
