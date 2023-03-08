@@ -55,9 +55,7 @@ const sidebar = {
       Object.entries(sidebar).map(([_unused, children]) => (
         <li>
           <div>
-            <h2
-              class="pb-2 text-xl font-semibold transition-colors duration-300 sm:text-lg"
-            >
+            <h2 class="pb-2 text-xl font-semibold transition-colors duration-300 sm:text-lg">
               Filter tags:
             </h2>
             <ul class="mb-2">
@@ -70,9 +68,9 @@ const sidebar = {
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx([
-                        "text-md text-dnt-orange-800 hover:border-dnt-orange-300/50 hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-100 block rounded-r-lg py-2 transition-colors [padding-inline-start:16px]",
+                        "text-md block rounded-r-lg py-2 text-dnt-orange-800 transition-colors [padding-inline-start:16px] hover:border-dnt-orange-300/50 hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-100",
                         isActive
-                          ? "border-dnt-orange-300 bg-dnt-orange-300/30 dark:bg-dnt-orange-300/20 font-medium"
+                          ? "border-dnt-orange-300 bg-dnt-orange-300/30 font-medium dark:bg-dnt-orange-300/20"
                           : "border-dnt-orange-300/20",
                         false ? "border-r-2" : "border-l-2",
                       ])}

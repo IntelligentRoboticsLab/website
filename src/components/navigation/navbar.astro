@@ -14,16 +14,21 @@ const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
 // const langCode = getLanguageFromURL(pathname);
 
-const navbarLinks: Array<{ href: string; label: string }> = [
-{
+const navbarLinks: Array<{ pattern: RegExp; href: string; label: string }> = [
+  {
+    pattern: new RegExp(
+      "^\b$" /* dont want the home button to appear selected */
+    ),
     href: "/",
-    label: "Home"
+    label: "Home",
   },
   {
+    pattern: new RegExp("^/publications"),
     href: "/publications",
-    label: "Publications"
+    label: "Publications",
   },
   {
+    pattern: new RegExp("^/en"),
     href: "/en/introduction",
     label: "Docs",
   },
@@ -37,13 +42,12 @@ const navbarLinks: Array<{ href: string; label: string }> = [
   //   label: "Contact (todo)",
   // },
 ];
-
 ---
 
 <nav
   class={clsx(
     "navbar flex flex-col relative justify-between items-center py-1",
-    "transition-colors duration-300",
+    "transition-colors duration-300"
     // {
     //   "z-40 text-slate-50 bg-default": isLanding,
     //   "transition-colors duration-300": !isLanding,
@@ -55,12 +59,16 @@ const navbarLinks: Array<{ href: string; label: string }> = [
     <div class="flex w-full items-center justify-between">
       <div>
         <a href="/" class="flex" title="Home">
-          <svg xmlns="http://www.w3.org/2000/svg"
-              width="80" height="80"
-              viewBox="0 0 3287 2284">
-              <path id="orange-patch"
-                  fill="#ff6700"
-                  d="M 2665.00,34.04
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="80"
+            height="80"
+            viewBox="0 0 3287 2284"
+          >
+            <path
+              id="orange-patch"
+              fill="#ff6700"
+              d="M 2665.00,34.04
                     C 2665.00,34.04 2679.00,34.04 2679.00,34.04
                       2679.00,34.04 2691.00,35.00 2691.00,35.00
                       2691.00,35.00 2739.00,35.00 2739.00,35.00
@@ -163,11 +171,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                       2661.00,123.00 2662.00,104.00 2662.00,104.00
                       2662.00,104.00 2663.00,76.00 2663.00,76.00
                       2663.00,76.00 2664.00,63.00 2664.00,63.00
-                      2664.00,63.00 2665.00,34.04 2665.00,34.04 Z" />
+                      2664.00,63.00 2665.00,34.04 2665.00,34.04 Z"
+            ></path>
 
-              <path id="black-patch"
-                  fill="#000"
-                  d="M 2770.00,2254.00
+            <path
+              id="black-patch"
+              fill="#000"
+              d="M 2770.00,2254.00
                     C 2770.00,2254.00 2711.00,2254.00 2711.00,2254.00
                       2711.00,2254.00 2694.00,2253.00 2694.00,2253.00
                       2694.00,2253.00 2491.00,2253.00 2491.00,2253.00
@@ -280,11 +290,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                       2765.00,2071.00 2766.00,2126.00 2766.00,2126.00
                       2766.00,2126.00 2767.00,2143.00 2767.00,2143.00
                       2767.00,2143.00 2769.00,2234.00 2769.00,2234.00
-                      2769.00,2234.00 2770.00,2254.00 2770.00,2254.00 Z" />
+                      2769.00,2234.00 2770.00,2254.00 2770.00,2254.00 Z"
+            ></path>
 
-              <path id="ball"
-                  fill="#fff"
-                  d="M 2249.00,1782.42
+            <path
+              id="ball"
+              fill="#fff"
+              d="M 2249.00,1782.42
                     C 2266.15,1780.34 2296.03,1784.40 2313.00,1788.63
                       2385.50,1806.67 2441.72,1858.45 2466.31,1929.00
                       2474.40,1952.22 2478.28,1980.47 2478.00,2005.00
@@ -299,11 +311,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                       2033.95,2032.41 2035.36,1958.47 2070.31,1894.00
                       2095.85,1846.87 2140.18,1810.29 2191.00,1793.35
                       2201.65,1789.80 2219.88,1785.50 2231.00,1784.15
-                      2231.00,1784.15 2249.00,1782.42 2249.00,1782.42 Z" />
+                      2231.00,1784.15 2249.00,1782.42 2249.00,1782.42 Z"
+            ></path>
 
-              <path id="nao"
-                  fill="#fff"
-                  d="M 2592.00,66.00
+            <path
+              id="nao"
+              fill="#fff"
+              d="M 2592.00,66.00
                     C 2592.00,66.00 2598.00,67.00 2598.00,67.00
                       2598.00,67.00 2596.00,68.00 2596.00,68.00
                       2596.00,68.00 2602.00,66.09 2602.00,66.09
@@ -797,12 +811,14 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                     M 3203.00,1168.00
                     C 3203.00,1168.00 3202.00,1168.00 3202.00,1168.00
                       3202.00,1168.00 3203.00,1169.00 3203.00,1169.00
-                      3203.00,1169.00 3203.00,1168.00 3203.00,1168.00 Z" />
+                      3203.00,1169.00 3203.00,1168.00 3203.00,1168.00 Z"
+            ></path>
 
-              <path id="outline"
-                  fill="#fff"
-                  class="fill-black dark:fill-white"
-                  d="M 2210.00,2.08
+            <path
+              id="outline"
+              fill="#fff"
+              class="fill-black dark:fill-white"
+              d="M 2210.00,2.08
                     C 2210.00,2.08 2242.00,2.08 2242.00,2.08
                       2242.00,2.08 2299.00,2.08 2299.00,2.08
                       2299.00,2.08 2475.00,2.08 2475.00,2.08
@@ -860,11 +876,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                       3005.00,67.06 2478.00,67.06 2478.00,67.06
                       2478.00,67.06 2303.00,67.06 2303.00,67.06
                       2303.00,67.06 2245.00,67.06 2245.00,67.06
-                      2245.00,67.06 2213.00,67.06 2213.00,67.06 Z" />
+                      2245.00,67.06 2213.00,67.06 2213.00,67.06 Z"
+            ></path>
 
-              <path id="text-dutch"
-                  fill="#ff6700"
-                  d="M 1305.00,575.00
+            <path
+              id="text-dutch"
+              fill="#ff6700"
+              d="M 1305.00,575.00
                     C 1305.00,575.00 1406.00,575.00 1406.00,575.00
                       1406.00,575.00 1429.00,575.00 1429.00,575.00
                       1430.82,575.01 1433.92,574.85 1435.40,576.02
@@ -986,11 +1004,13 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                       219.85,351.37 216.47,331.63 207.54,322.30
                       198.30,312.65 179.96,309.16 167.00,309.00
                       167.00,309.00 150.00,309.00 150.00,309.00
-                      150.00,309.00 150.00,715.00 150.00,715.00 Z" />
+                      150.00,309.00 150.00,715.00 150.00,715.00 Z"
+            ></path>
 
-              <path id="text-nao-team"
-                  class="fill-black dark:fill-white"
-                  d="M 1622.00,846.21
+            <path
+              id="text-nao-team"
+              class="fill-black dark:fill-white"
+              d="M 1622.00,846.21
                     C 1622.00,846.21 1649.00,846.21 1649.00,846.21
                       1649.00,846.21 1672.00,847.85 1672.00,847.85
                       1718.23,853.37 1758.04,869.98 1783.58,911.00
@@ -1191,20 +1211,21 @@ const navbarLinks: Array<{ href: string; label: string }> = [
                       1123.17,1814.00 1119.42,1772.00 1119.42,1772.00
                       1119.42,1772.00 1116.83,1742.00 1116.83,1742.00
                       1116.83,1742.00 1108.83,1654.00 1108.83,1654.00
-                      1108.83,1654.00 1102.00,1577.00 1102.00,1577.00 Z" />
+                      1108.83,1654.00 1102.00,1577.00 1102.00,1577.00 Z"
+            ></path>
           </svg>
         </a>
       </div>
-      <div class="min-[500px]:flex flex-row gap-2 ml-4 hidden">
+      <div class="ml-4 hidden flex-row gap-2 min-[500px]:flex">
         {
           navbarLinks.map((navbarLink) => (
             <a
               class={clsx(
-                "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 transition-colors hover:no-underline text-dnt-orange-800 hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
+                "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 hover:no-underline dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
                 {
                   "bg-dnt-orange-200/50 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50":
-                    navbarLink.href === currentPage,
-                },
+                    navbarLink.pattern.exec(currentPage),
+                }
               )}
               aria-current={navbarLink.href === currentPage ? "page" : "false"}
               href={navbarLink.href}
@@ -1226,7 +1247,7 @@ const navbarLinks: Array<{ href: string; label: string }> = [
       >
         <ThemeToggleButton />
       </div>
-      <div class={clsx([{"hidden": isLanding}])}>
+      <div class={clsx([{ hidden: isLanding }])}>
         <SidebarToggle isLanding={isLanding} />
       </div>
       <!-- <div class="hidden w-full max-w-xs rounded-lg md:block">

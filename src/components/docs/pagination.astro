@@ -9,7 +9,7 @@ const currentPage = Astro.url.pathname;
 const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
-  hasTrailing ? -1 : currentPage.length,
+  hasTrailing ? -1 : currentPage.length
 ) as SidebarItemLink;
 
 const langCode = getLanguageFromURL(currentPage);

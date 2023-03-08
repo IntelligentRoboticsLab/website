@@ -31,7 +31,7 @@ export default function OnThisPageLinks({
 
   useEffect(() => {
     const articleHeadings = Array.from(
-      document.querySelectorAll("article :is(h1,h2,h3)"),
+      document.querySelectorAll("article :is(h1,h2,h3)")
     );
 
     const allObservers = articleHeadings.map((h) => {
@@ -40,7 +40,7 @@ export default function OnThisPageLinks({
           entries.forEach((entry) => {
             const id = entry.target.id;
             const tocItem = Array.from(
-              document.querySelectorAll(`a[href="#${id}"]`),
+              document.querySelectorAll(`a[href="#${id}"]`)
             ).at(-1);
             // occurs when the id = "toc-heading"
             if (!tocItem) return;
@@ -49,7 +49,7 @@ export default function OnThisPageLinks({
               const headings = headingWithIsVisible.map((h) =>
                 h.slug === id
                   ? { ...h, isVisible: true }
-                  : { ...h, isVisible: false },
+                  : { ...h, isVisible: false }
               );
               setHeadingWithIsVisible(headings);
             }
@@ -58,7 +58,7 @@ export default function OnThisPageLinks({
         {
           rootMargin: "-100px 0% -66%",
           threshold: 1,
-        },
+        }
       );
 
       observer.observe(h);
@@ -90,7 +90,7 @@ export default function OnThisPageLinks({
                   stroke="currentColor"
                   className={clsx(
                     "h-3 w-3 sm:h-4 sm:w-4",
-                    isRtl && "-scale-x-100",
+                    isRtl && "-scale-x-100"
                   )}
                 >
                   <path
@@ -124,7 +124,7 @@ export default function OnThisPageLinks({
                                 active,
                               "bg-dnt-orange-300/30 font-medium text-dnt-orange-700 underline dark:bg-dnt-orange-300/20 dark:text-dnt-orange-100":
                                 heading.isVisible,
-                            },
+                            }
                           )}
                           href={`#${heading.slug}`}
                         >

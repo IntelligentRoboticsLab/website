@@ -24,7 +24,7 @@ const {
     width={48}
     height={48}
     format="webp"
-    class="rounded-full w-12 h-12 mr-3"
+    class="mr-3 h-12 w-12 rounded-full"
     alt={`@${handle}'s Avatar`}
   />
   <div class="flex flex-1 flex-wrap justify-start">
@@ -119,7 +119,9 @@ const {
         </a>
         <span class="ml-1">{retweets}</span>
       </div>
-      <div class="mr-6 flex items-center text-dnt-orange-100 hover:text-red-500">
+      <div
+        class="mr-6 flex items-center text-dnt-orange-100 hover:text-red-500"
+      >
         <a
           aria-label="Like"
           href={`https://twitter.com/intent/like?tweet_id=${id}`}

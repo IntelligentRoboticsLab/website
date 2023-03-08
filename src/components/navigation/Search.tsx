@@ -15,7 +15,6 @@ const useDocSearchKeyboardEvents =
   docSearchReact.useDocSearchKeyboardEvents ||
   (docSearchReact as any).default.useDocSearchKeyboardEvents;
 
-
 export default function Search({ isLanding }: { isLanding: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const searchButtonRef = useRef<HTMLButtonElement>(null);
@@ -34,7 +33,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
       setIsOpen(true);
       setInitialQuery(e.key);
     },
-    [setIsOpen, setInitialQuery],
+    [setIsOpen, setInitialQuery]
   );
 
   useDocSearchKeyboardEvents({
@@ -58,7 +57,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
               isLanding,
             "dark:hover:bg-dnt-orange/20 border bg-dnt-orange-200/50 duration-300 hover:bg-dnt-orange-200/75 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:text-slate-100 dark:hover:border-dnt-orange-200/50":
               !isLanding,
-          },
+          }
         )}
       >
         <div className="flex items-center justify-center gap-1 lg:gap-3">
@@ -107,7 +106,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
               }}
             />
           </div>,
-          document.body,
+          document.body
         )}
     </>
   );

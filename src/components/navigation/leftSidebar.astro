@@ -16,7 +16,7 @@ const isLanding = checkLanding(currentPage) || !!isNotFound;
 const hasTrailing = currentPage.endsWith("/");
 const currentPageMatch = currentPage.slice(
   1,
-  hasTrailing ? -1 : currentPage.length,
+  hasTrailing ? -1 : currentPage.length
 );
 const isRtl = getIsRtlFromUrl(currentPage);
 
@@ -42,7 +42,7 @@ if (langCode !== "en") {
           .find(
             ({ link: nativeLink }) =>
               // trailing slash + language code
-              nativeLink.slice(langCode.length + 1) === item.link.slice(3),
+              nativeLink.slice(langCode.length + 1) === item.link.slice(3)
           );
         return {
           text: match?.text ?? item.text,
@@ -52,7 +52,7 @@ if (langCode !== "en") {
       });
 
       return [nativeHeader, nativeItems];
-    }),
+    })
   );
 }
 ---
@@ -78,7 +78,7 @@ if (langCode !== "en") {
                 {
                   // mobile menu on landing page
                   "text-slate-50": isLanding,
-                },
+                }
               )}
             >
               {header}
@@ -93,7 +93,7 @@ if (langCode !== "en") {
                       href={url}
                       aria-current={isActive ? "page" : false}
                       class={clsx([
-                        "text-md block py-2 rounded-r-lg text-dnt-orange-800 transition-colors [padding-inline-start:16px] hover:border-dnt-orange-300/50 hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-100",
+                        "text-md block rounded-r-lg py-2 text-dnt-orange-800 transition-colors [padding-inline-start:16px] hover:border-dnt-orange-300/50 hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-100",
                         isActive
                           ? "border-dnt-orange-300 bg-dnt-orange-300/30 font-medium dark:bg-dnt-orange-300/20"
                           : "border-dnt-orange-300/20",

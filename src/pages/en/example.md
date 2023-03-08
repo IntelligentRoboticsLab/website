@@ -12,23 +12,26 @@ lang: en
 ## DNT Docs start here!
 
 ## h2 Heading
+
 ### h3 Heading
+
 #### h4 Heading
+
 ##### h5 Heading
+
 ###### h6 Heading
 
 ## Emphasis
 
 **This is bold text**
 
-__This is bold text__
+**This is bold text**
 
-*This is italic text*
+_This is italic text_
 
 _This is italic text_
 
 ~~Strikethrough~~
-
 
 <!-- ## Blockquotes
 
@@ -37,39 +40,39 @@ _This is italic text_
 >> ...by using additional greater-than signs right next to each other...
 > > > ...or with spaces between arrows. -->
 
-
 ## Lists
 
 Unordered
 
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces:
   - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
+    - Ac tristique libero volutpat at
+    * Facilisis in pretium nisl aliquet
     - Nulla volutpat aliquam velit
-+ Very easy!
+- Very easy!
 
-  
 Ordered
 
 1. Lorem ipsum dolor sit amet
 2. Consectetur adipiscing elit
 3. Integer molestie lorem at massa
 
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
+4. You can use sequential numbers...
+5. ...or keep all the numbers as `1.`
 
 ## We can code:
+
 Inline `code`!
 
 Code blocks!
+
 ```
 Sample text here...
 ```
 
 We can even do syntax highlighting 🤯!
+
 ```rust:magic.rs
 fn what() {
     fn the(x: &Cell<bool>) {
@@ -100,7 +103,6 @@ console.log(foo(5));
 | Beginners TypeScript Tutorial                             | https://github.com/total-typescript/beginners-typescript-tutorial |
 | Type Challenges                                           | https://github.com/type-challenges/type-challenges                |
 | Rodney Mullen of TypeScript (Matt Pocock) Youtube Channel | https://www.youtube.com/c/MattPocockUk/videos                     |
-
 
 ## Links
 
