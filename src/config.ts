@@ -75,22 +75,16 @@ export const SIDEBAR: Sidebar = {
   // },
 
   en: {
-    "Welcome": [
-      { text: "Introduction", link: "en/introduction" },
-    ],
+    Welcome: [{ text: "Introduction", link: "en/introduction" }],
     "Open Source": [
       { text: "Nidhogg", link: "en/open-source/nidhogg" },
       { text: "Bifrost", link: "en/open-source/bifrost" },
     ],
-    "Framework": [
-      { text: "🐉", link: "en/framework/y" },
-    ],
+    Framework: [{ text: "🐉", link: "en/framework/y" }],
   },
-
 };
 
 export const SIDEBAR_HEADER_MAP: Record<
   Exclude<KnownLanguageCode, "en">,
   Record<OuterHeaders, string>
-> = {
-};
+> = {};

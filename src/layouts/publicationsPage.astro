@@ -80,7 +80,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
       </nav>
 
       <div
-        class="col-span-1 flex min-h-full w-full px-8 flex-col pt-5"
+        class="col-span-1 flex min-h-full w-full flex-col px-8 pt-5"
         id="content"
       >
         {
@@ -90,7 +90,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
                 {
                   <h1
                     class={clsx(
-                      "text-dnt-orange-900 dark:text-dnt-orange-50 text-3xl mb-2 font-semibold",
+                      "mb-2 text-3xl font-semibold text-dnt-orange-900 dark:text-dnt-orange-50",
                       {
                         hidden:
                           pubYear.publications.filter((pub) => {

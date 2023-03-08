@@ -13,7 +13,7 @@ import JumpToContent from "../components/accessibility/jumpToContent.astro";
 
 export interface Props {
   isNotFound?: boolean;
-  forceLightTheme?: boolean
+  forceLightTheme?: boolean;
 }
 
 const currentPage = Astro.url.pathname;
@@ -51,23 +51,21 @@ const { isNotFound } = Astro.props;
       }
     </script>
   </head>
-  <body
-    class="min-h-screen bg-default"
-  >
+  <body class="min-h-screen bg-default">
     <JumpToContent />
-      <Navbar isNotFound={isNotFound || false} />
-      <aside id="grid-left" class="hidden" title="Site Navigation">
-        <div class="fixed left-0 top-0 z-30 h-screen w-screen bg-default">
-          <div class="fixed top-24 h-[calc(100%-96px)] w-full pb-16">
-            <LeftSidebar
-              currentPage={currentPage}
-              isNotFound={isNotFound || false}
-            />
-          </div>
+    <Navbar isNotFound={isNotFound || false} />
+    <aside id="grid-left" class="hidden" title="Site Navigation">
+      <div class="fixed left-0 top-0 z-30 h-screen w-screen bg-default">
+        <div class="fixed top-24 h-[calc(100%-96px)] w-full pb-16">
+          <LeftSidebar
+            currentPage={currentPage}
+            isNotFound={isNotFound || false}
+          />
         </div>
-      </aside>
-      <main id="content">
-        <slot/>
-      </main>
+      </div>
+    </aside>
+    <main id="content">
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,16 +1,21 @@
 ---
-const currentYear = new Date().getFullYear()
+const currentYear = new Date().getFullYear();
 ---
 
 <div class="flex justify-center py-8 px-8">
-    <h1 class="text-stone-400 dark:text-stone-500">Made with love, robots <span class="hover:cursor-pointer" id="dont-click-this-secret-button">🤖</span> and Dr. Pepper - Dutch Nao Team {currentYear}</h1>
+  <h1 class="text-stone-400 dark:text-stone-500">
+    Made with love, robots <span
+      class="hover:cursor-pointer"
+      id="dont-click-this-secret-button">🤖</span
+    > and Dr. Pepper - Dutch Nao Team {currentYear}
+  </h1>
 </div>
 
 <script>
-	import confetti from 'canvas-confetti';
-	const button = document.getElementById("dont-click-this-secret-button");
+  import confetti from "canvas-confetti";
+  const button = document.getElementById("dont-click-this-secret-button");
 
-	if (button) {
-		button.addEventListener('click', () => confetti());
-	}
+  if (button) {
+    button.addEventListener("click", () => confetti());
+  }
 </script>

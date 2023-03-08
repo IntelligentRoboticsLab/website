@@ -15,18 +15,18 @@ const options = {
   inputs.forEach((input) =>
     input.addEventListener("change", () => {
       const selected = Array.from(inputs).flatMap(({ value, checked }) =>
-        checked ? [value] : [],
+        checked ? [value] : []
       );
 
       // Rerender the diagram
       document.dispatchEvent(
         new CustomEvent("fileStructureComponentsChange", {
           detail: { selected },
-        }),
+        })
       );
 
       hideUnselectedDocs(selected);
-    }),
+    })
   );
 
   const hideUnselectedDocs = (selected: string[]) => {
@@ -36,7 +36,7 @@ const options = {
         el.style.display = !el.dataset.components
           ?.split(" ")
           .some((components) =>
-            components.split("+").every((option) => selected.includes(option)),
+            components.split("+").every((option) => selected.includes(option))
           )
           ? "none"
           : "";

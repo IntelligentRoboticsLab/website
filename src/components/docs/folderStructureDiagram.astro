@@ -1,5 +1,5 @@
 <script>
-  import { asTree,type TreeObject } from "treeify";
+  import { asTree, type TreeObject } from "treeify";
 
   const element = document.getElementById("fileStructure");
 
@@ -9,7 +9,7 @@
     "fileStructureComponentsChange",
     (event: CustomEvent<{ selected: string[] }>) => {
       renderDiagram(event.detail.selected);
-    },
+    }
   );
 
   const allFiles = {
@@ -50,7 +50,7 @@
       .map(([filename, components]) => {
         if (components.length === 0) return filename;
         return components.some((component) =>
-          component.split("+").every((option) => selected.includes(option)),
+          component.split("+").every((option) => selected.includes(option))
         )
           ? filename
           : null;

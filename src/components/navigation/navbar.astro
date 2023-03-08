@@ -1216,12 +1216,12 @@ const navbarLinks: Array<{ pattern: RegExp; href: string; label: string }> = [
           </svg>
         </a>
       </div>
-      <div class="min-[500px]:flex flex-row gap-2 ml-4 hidden">
+      <div class="ml-4 hidden flex-row gap-2 min-[500px]:flex">
         {
           navbarLinks.map((navbarLink) => (
             <a
               class={clsx(
-                "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 transition-colors hover:no-underline text-dnt-orange-800 hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
+                "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 hover:no-underline dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
                 {
                   "bg-dnt-orange-200/50 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50":
                     navbarLink.pattern.exec(currentPage),
