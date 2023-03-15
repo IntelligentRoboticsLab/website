@@ -7,7 +7,7 @@ const PubsByYear = z.array(z.object({
 
 export const publicationsByYear = PubsByYear.parse([
     {
-        year: '2022',
+        year: '2023',
         publications: [
             {
                 title: ' Neural Factorization of Shape and Reflectance of a football Under an Unknown Illumination',
@@ -18,7 +18,7 @@ export const publicationsByYear = PubsByYear.parse([
                 year: '2023',
                 type: 'misc',
                 tags: ['BSc', 'NERF'],
-                id: 'Bolt2022',
+                id: 'monte2022',
                 file: 'https://staff.fnwi.uva.nl/a.visser/education/bachelorAI/Monte_NERF_of_a_football_under_unknown_illumination.pdf'
             }
 	]
@@ -103,7 +103,7 @@ export const publicationsByYear = PubsByYear.parse([
                 date: '2021-07-13',
                 year: '2021',
                 type: 'techreport',
-                tags: ['Msc', 'object detection', 'YOLO'],
+                tags: ['Msc', 'Object-Detection', 'YOLO'],
                 id: 'Weerd2021',
                 file: '/publications/2021/Weerd2021.pdf'
             }
@@ -857,7 +857,7 @@ export const publicationsByYear = PubsByYear.parse([
                 date: '2011-06-01',
                 year: '2011',
                 type: 'techreport',
-                tags: ['behavior'],
+                tags: ['Behavior'],
                 id: 'vanbellen2011zone',
                 file: '/publications/2011/vanbellen2011zone.pdf'
             },
@@ -917,7 +917,7 @@ export const publicationsByYear = PubsByYear.parse([
                 date: '2011-10-01',
                 year: '2011',
                 type: 'misc',
-                tags: ['code'],
+                tags: ['Code'],
                 id: 'verschoor2011trb',
                 file: '/publications/2011/verschoor2011trb.pdf'
             },
@@ -942,7 +942,7 @@ export const publicationsByYear = PubsByYear.parse([
                 date: '2010-05-01',
                 year: '2010',
                 type: 'techreport',
-                tags: ['perception'],
+                tags: ['Perception'],
                 id: 'vanbellen2010finding',
                 file: '/publications/2010/vanbellen2010finding.pdf'
             },
