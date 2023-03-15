@@ -16,6 +16,19 @@ const currentYear = new Date().getFullYear();
   const button = document.getElementById("dont-click-this-secret-button");
 
   if (button) {
-    button.addEventListener("click", () => confetti());
+    button.addEventListener("click", () => {
+      confetti({
+        particleCount: 1e3,
+        angle: 360,
+        spread: 360,
+        origin: { x: 0 },
+      });
+      confetti({
+        particleCount: 1e3,
+        angle: 0,
+        spread: 360,
+        origin: { x: 1 },
+      });
+    });
   }
 </script>
