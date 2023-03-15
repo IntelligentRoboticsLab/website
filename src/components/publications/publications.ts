@@ -20,7 +20,8 @@ export const publicationsByYear = PubsByYear.parse([
                 tags: ['BSc', 'NERF'],
                 id: 'Bolt2022',
                 file: 'https://staff.fnwi.uva.nl/a.visser/education/bachelorAI/Monte_NERF_of_a_football_under_unknown_illumination.pdf'
-            },
+            }
+	]
     },
     {
         year: '2022',
@@ -409,8 +410,9 @@ export const publicationsByYear = PubsByYear.parse([
                 tags: ['Technical-Report'],
                 id: 'dnt2016tqd',
                 file: '/publications/2015/dnt2016tqd.pdf'
-            },
-        },
+            }
+        ]
+    },	
     {
         year: '2014',
         publications: [
