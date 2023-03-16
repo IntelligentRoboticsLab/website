@@ -234,7 +234,9 @@ export const publicationsByYear = PubsByYear.parse([
                 authors: ['Ruben van Heusden'],
                 date: '2018-06-02',
                 year: '2018',
-                type: 'misc',
+                type: 'inproceedings',
+		booktitle: 'Proceedings of the 30th Belgian-Netherlands Conference on Artificial Intelligence (BNAIC 2018)',
+		pages: 89-90,
                 tags: ['BSc', 'RL', 'Keeper'],
                 id: 'vanHeusden2018',
                 file: '/publications/2018/vanHeusden2018.pdf'
