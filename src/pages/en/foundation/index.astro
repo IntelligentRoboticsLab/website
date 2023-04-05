@@ -1,0 +1,24 @@
+---
+import IndexPage from "../../../components/docs/indexPage.astro";
+import { Frontmatter, SIDEBAR } from "../../../config";
+import { getLanguageFromURL } from "../../../languages";
+import Layout from "../../../layouts/docs.astro";
+
+const frontmatter: Frontmatter = {
+  title: "Framework",
+  layout: "docs",
+  description: "The Dutch Nao Team framework",
+};
+
+const lang = getLanguageFromURL(Astro.url.pathname);
+const sidebarEntries = SIDEBAR[lang]["Framework"]!;
+const files = await Astro.glob("./*.{md,mdx,astro}");
+---
+
+<Layout frontmatter={frontmatter} headings={[]}>
+  <IndexPage
+    frontmatter={frontmatter}
+    sidebarEntries={sidebarEntries}
+    files={files}
+  />
+</Layout>
