@@ -55,7 +55,7 @@ Demonstratie van robotvoetbal voor leerlingen van een Franse middelbare school. 
 | 18 november 2022 | LAB42 Science park 900, Amsterdam |
 
 **Omschrijving:**
-Demonstraties gegeven voor de Open Campus Day van de Universiteit van Amsterdam. Doelgroep waren middelbare scholieren die een studie gaan kiezen. |
+Demonstraties gegeven voor de Open Campus Day van de Universiteit van Amsterdam. Doelgroep waren middelbare scholieren die een studie gaan kiezen.
 
 ### Gastles Robotica
 

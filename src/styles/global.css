@@ -252,7 +252,7 @@
     overflow-wrap: anywhere;
   }
   .markdown table {
-    /* @apply max-w-full table-fixed; */
+    @apply max-w-full table-fixed;
     width: 100%;
     text-align: left;
   }
