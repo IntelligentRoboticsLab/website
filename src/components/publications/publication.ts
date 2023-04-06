@@ -66,7 +66,7 @@ export const Publication = z.object({
   file: z.string(),
 });
 
-export const to_bibtex = (pub: IPublication): string => {
+export const toBibtex = (pub: IPublication): string => {
   const type = pub.type ?? "misc";
 
   let bibtex = `@${type} {
@@ -137,21 +137,3 @@ export const to_bibtex = (pub: IPublication): string => {
 
   return `${bibtex}\n}`;
 }
-
-export const to_bibtex = (pub: IPublication): string => {
-  const type = pub.type ?? "misc";
-  const authorLabel = pub.authors.length > 1 ? "authors" : "author";
-
-  const bibtex = `@${type} {
-  title = {${pub.title}},
-  ${authorLabel} = {${pub.authors.join(", ")}},
-  year = {${pub.year}},
-  date = {${pub.date}},
-  tags = {${pub.tags.join(", ")}},
-  ${pub.abstract ? `abstract = {${pub.abstract}},\n  ` : ""}
-  ${pub.journal ? `journal = {${pub.journal}},\n  ` : ""}
-  ${pub.volume ? `volume = {${pub.volume}},\n  ` : ""}
-}`;
-
-  return bibtex;
-};

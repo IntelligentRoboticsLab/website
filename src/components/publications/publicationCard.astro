@@ -1,6 +1,6 @@
 ---
 import BibButton from "./bibButton";
-import { IPublication, to_bibtex } from "./publication";
+import { IPublication, toBibtex } from "./publication";
 
 export interface Props {
   year: string;
@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const { publication } = Astro.props;
-const bibtex = to_bibtex(publication);
+const bibtex = toBibtex(publication);
 ---
 
 <div class="text-dnt-orange-500 dark:text-dnt-orange-300">
