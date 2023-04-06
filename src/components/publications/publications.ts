@@ -21,7 +21,7 @@ export const publicationsByYear = PubsByYear.parse([
                 id: 'monte2022',
                 file: 'https://staff.fnwi.uva.nl/a.visser/education/bachelorAI/Monte_NERF_of_a_football_under_unknown_illumination.pdf'
             }
-	]
+        ]
     },
     {
         year: '2022',
@@ -235,8 +235,8 @@ export const publicationsByYear = PubsByYear.parse([
                 date: '2018-06-02',
                 year: '2018',
                 type: 'inproceedings',
-		booktitle: 'Proceedings of the 30th Belgian-Netherlands Conference on Artificial Intelligence (BNAIC 2018)',
-		pages: 89-90,
+                booktitle: 'Proceedings of the 30th Belgian-Netherlands Conference on Artificial Intelligence (BNAIC 2018)',
+                pages: '89-90',
                 tags: ['BSc', 'RL', 'Keeper'],
                 id: 'vanHeusden2018',
                 file: '/publications/2018/vanHeusden2018.pdf'
@@ -414,7 +414,7 @@ export const publicationsByYear = PubsByYear.parse([
                 file: '/publications/2015/dnt2016tqd.pdf'
             }
         ]
-    },	
+    },
     {
         year: '2014',
         publications: [
