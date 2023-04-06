@@ -10,7 +10,7 @@ export const publicationsByYear = PubsByYear.parse([
         year: '2023',
         publications: [
             {
-                title: ' Neural Factorization of Shape and Reflectance of a football Under an Unknown Illumination',
+                title: 'Neural Factorization of Shape and Reflectance of a football Under an Unknown Illumination',
                 authors: [
                     'Xavier Monté'
                 ],
@@ -19,9 +19,9 @@ export const publicationsByYear = PubsByYear.parse([
                 type: 'misc',
                 tags: ['BSc', 'NERF'],
                 id: 'monte2022',
-                file: 'https://staff.fnwi.uva.nl/a.visser/education/bachelorAI/Monte_NERF_of_a_football_under_unknown_illumination.pdf'
+                file: 'https://staff.fnwi.uva.nl/a.visser/education/bachelorAI/Monte_NERF_of_a_football_under_unknown_illumination.pdf',
             }
-	]
+        ]
     },
     {
         year: '2022',
@@ -412,7 +412,7 @@ export const publicationsByYear = PubsByYear.parse([
                 file: '/publications/2015/dnt2016tqd.pdf'
             }
         ]
-    },	
+    },
     {
         year: '2014',
         publications: [
