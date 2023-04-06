@@ -9,5 +9,8 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
   }
 }

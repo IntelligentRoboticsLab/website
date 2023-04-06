@@ -4,6 +4,15 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      keyframes: {
+        checkmark: {
+          "0%": { "stroke-dashoffset": -30 },
+          "100%": { "stroke-dashoffset": 200 },
+        },
+      },
+      animation: {
+        checkmark: "checkmark 1s ease-in-out normal",
+      },
       colors: {
         default: "rgb(var(--color-default) / <alpha-value>)",
         neutral: "rgb(var(--color-neutral) / <alpha-value>)",
