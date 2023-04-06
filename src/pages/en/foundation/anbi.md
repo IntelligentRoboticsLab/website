@@ -16,12 +16,6 @@ lang: en
 
 Het doel van de stichting is het bevorderen van onderzoek, onderwijs, bewustwording en kennisoverdracht gerelateerd aan kunstmatige intelligentie en robotica. Dit wil de stichting zowel nationaal als internationaal doen in een competitieve omgeving zoals de regionale en wereldkampioenschappen georganiseerd door de RoboCup Federation.
 
-## Hoofdlijnen van het beleidsplan
-
-[📄 Beleidsplan](/anbi/Beleidsplan.pdf)
-
-<!-- https://docs.google.com/document/d/1kBbH-v_PDP9RsHyGgyxG0GLVNYv2z4FiJz7nWKygp3M/edit -->
-
 ## Functies en namen van de bestuurders
 
 | Functie        | Naam                 |
@@ -81,9 +75,16 @@ Gastles gegeven over robotica op een basisschool voor kinderen van groep 7 en 8.
 **Omschrijving:**
 Geholpen bij de open dag van het Science Park. We stonden met de robots op de eerste verdieping en bezoekers konden zelf met een controller de robots laten voetballen.
 
+## Hoofdlijnen van het beleidsplan
+
+[📄 Beleidsplan](/anbi/Beleidsplan.pdf)
+
 ## Financiële verantwoording
 
-### Jaarrekening en Staat van baten en lasten
+### Jaarrekening
 
-[📄 Jaarrekening 2022](/anbi/Jaarrekening_DNT_2022_Getekend.pdf) <br>
+[📄 Jaarrekening 2022](/anbi/Jaarrekening_DNT_2022_Getekend.pdf)
+
+### Staat van baten en lasten
+
 [📄 Staat van baten en lasten 2022](/anbi/Administratie2022.xlsx)
