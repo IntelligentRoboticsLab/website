@@ -131,9 +131,5 @@ export const toBibtex = (pub: IPublication): string => {
     bibtex = `${bibtex},\n  note = {${pub.note}}`
   }
 
-  if (pub.pages) {
-    bibtex = `${bibtex},\n  pages = {${pub.pages}}`
-  }
-
   return `${bibtex}\n}`;
 }
