@@ -1,6 +1,11 @@
 import { useState } from "react";
 
-export default function BibButton(props) {
+interface IBibButtonProps {
+  bibtex: string;
+  text: string;
+}
+
+export default function BibButton(props: IBibButtonProps) {
   const [cooldown, setCooldown] = useState(false);
 
   return (
@@ -8,8 +13,8 @@ export default function BibButton(props) {
       <button
         id="command"
         onClick={() => {
+          navigator.clipboard.writeText(props.bibtex);
           if (cooldown === false) {
-            navigator.clipboard.writeText(props.bibtex);
             setCooldown(true);
 
             setTimeout(() => {

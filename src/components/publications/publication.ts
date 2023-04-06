@@ -1,10 +1,29 @@
 import { z } from "zod";
 
+const PUBLICATION_TYPE_SCHEMA = z.enum([
+  "article",
+  "book",
+  "booklet",
+  "conference",
+  "inbook",
+  "incollection",
+  "inproceedings",
+  "manual",
+  "mastersthesis",
+  "misc",
+  "phdthesis",
+  "proceedings",
+  "techreport",
+  "unpublished",
+]);
+
+export type PublicationType = z.infer<typeof PUBLICATION_TYPE_SCHEMA>;
+
 export interface IPublication {
   title: string;
   authors: string[];
   abstract?: string;
-  type?: string;
+  type?: PublicationType;
   journal?: string;
   volume?: string;
   pages?: string;
@@ -28,7 +47,7 @@ export const Publication = z.object({
   authors: z.string().array(),
   abstract: z.string().optional(),
   tags: z.string().array(),
-  type: z.string().optional(),
+  type: PUBLICATION_TYPE_SCHEMA,
   booktitle: z.string().optional(),
   chapter: z.string().optional(),
   edition: z.string().optional(),
@@ -118,3 +137,21 @@ export const to_bibtex = (pub: IPublication): string => {
 
   return `${bibtex}\n}`;
 }
+
+export const to_bibtex = (pub: IPublication): string => {
+  const type = pub.type ?? "misc";
+  const authorLabel = pub.authors.length > 1 ? "authors" : "author";
+
+  const bibtex = `@${type} {
+  title = {${pub.title}},
+  ${authorLabel} = {${pub.authors.join(", ")}},
+  year = {${pub.year}},
+  date = {${pub.date}},
+  tags = {${pub.tags.join(", ")}},
+  ${pub.abstract ? `abstract = {${pub.abstract}},\n  ` : ""}
+  ${pub.journal ? `journal = {${pub.journal}},\n  ` : ""}
+  ${pub.volume ? `volume = {${pub.volume}},\n  ` : ""}
+}`;
+
+  return bibtex;
+};
