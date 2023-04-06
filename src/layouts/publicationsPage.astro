@@ -143,20 +143,5 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         </aside>
       </div>
     </main>
-    <script defer>
-      const matches = document.querySelectorAll("[data-heading-link]");
-      if (matches && matches.length) {
-        matches.forEach((elem) => {
-          const href = elem.href;
-          elem.addEventListener(
-            "click",
-            () => {
-              navigator.clipboard.writeText(href);
-            },
-            false
-          );
-        });
-      }
-    </script>
   </body>
 </html>

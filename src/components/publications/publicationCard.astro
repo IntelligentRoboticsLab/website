@@ -1,5 +1,6 @@
 ---
-import type { IPublication } from "./publication";
+import BibButton from "./bibButton";
+import { IPublication, to_bibtex } from "./publication";
 
 export interface Props {
   year: string;
@@ -7,6 +8,7 @@ export interface Props {
 }
 
 const { publication } = Astro.props;
+const bibtex = to_bibtex(publication);
 ---
 
 <div class="text-dnt-orange-500 dark:text-dnt-orange-300">
@@ -24,5 +26,7 @@ const { publication } = Astro.props;
     <p class="text-md text-dnt-orange-900 dark:text-dnt-orange-100">
       Tags: {publication.tags.join(", ")}
     </p>
+    <div class="py-1"></div>
+    <BibButton client:load text={"BibTeX"} bibtex={bibtex} />
   </div>
 </div>
