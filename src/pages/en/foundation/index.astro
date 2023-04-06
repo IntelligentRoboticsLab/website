@@ -5,13 +5,13 @@ import { getLanguageFromURL } from "../../../languages";
 import Layout from "../../../layouts/docs.astro";
 
 const frontmatter: Frontmatter = {
-  title: "Framework",
+  title: "Foundation",
   layout: "docs",
-  description: "The Dutch Nao Team framework",
+  description: "Information regarding our foundation. ",
 };
 
 const lang = getLanguageFromURL(Astro.url.pathname);
-const sidebarEntries = SIDEBAR[lang]["Framework"]!;
+const sidebarEntries = SIDEBAR[lang]["Foundation"]!;
 const files = await Astro.glob("./*.{md,mdx,astro}");
 ---
 

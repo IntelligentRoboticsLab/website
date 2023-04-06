@@ -1,6 +1,6 @@
 ---
 title: ANBI Status
-description: The Dutch Nao Team framework
+description: The Dutch Nao Team Foundation
 layout: ../../../layouts/docs.astro
 lang: en
 ---
