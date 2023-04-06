@@ -34,25 +34,25 @@ export const to_bibtex = (pub: IPublication): string => {
   const type = pub.type ?? "misc";
 
   let bibtex = `@${type} {
-  title = ${pub.title},
-  authors = ${pub.authors},
-  year = ${pub.year},
-  date = ${pub.date}`;
+  title = {${pub.title}},
+  authors = {${pub.authors}},
+  year = {${pub.year}},
+  date = {${pub.date}}`;
 
   if (pub.abstract) {
-    bibtex = `${bibtex},\n  abstract = ${pub.abstract}`
+    bibtex = `${bibtex},\n  abstract = {${pub.abstract}}`
   }
 
   if (pub.journal) {
-    bibtex = `${bibtex},\n  journal = ${pub.journal}`
+    bibtex = `${bibtex},\n  journal = {${pub.journal}}`
   }
 
   if (pub.volume) {
-    bibtex = `${bibtex},\n  volume = ${pub.volume}`
+    bibtex = `${bibtex},\n  volume = {${pub.volume}}`
   }
 
   if (pub.number) {
-    bibtex = `${bibtex},\n  number = ${pub.number}`
+    bibtex = `${bibtex},\n  number = {${pub.number}}`
   }
 
   return `${bibtex}\n}`;
