@@ -54,7 +54,7 @@ export const to_bibtex = (pub: IPublication): string => {
   title = {${pub.title}},
   author${pub.authors.length > 1 ? "s" : ""} = {${pub.authors.join(", ")}},
   year = {${pub.year}},
-  date = {${pub.date}}
+  date = {${pub.date}},
   tags = {${pub.tags.join(", ")}}`;
 
   // TODO: find a better way to do this
