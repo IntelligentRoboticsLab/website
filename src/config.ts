@@ -45,7 +45,7 @@ export const ALGOLIA = {
     apiKey: "#",
 };
 
-export type OuterHeaders = "Welcome" | "Open Source" | "Framework" | "Foundation";
+export type OuterHeaders = "Welcome" | "Open Source" | "Framework";
 
 export type SidebarItem<TCode extends KnownLanguageCode = KnownLanguageCode> = {
     text: string;
@@ -81,7 +81,6 @@ export const SIDEBAR: Sidebar = {
             { text: "Bifrost", link: "en/open-source/bifrost" },
         ],
         Framework: [{ text: "🐉", link: "en/framework/y" }],
-        Foundation: [{ text: "ANBI Status", link: "en/foundation/anbi" }],
     },
 };
 
