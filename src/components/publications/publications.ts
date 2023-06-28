@@ -10,6 +10,30 @@ export const publicationsByYear = PubsByYear.parse([
         year: '2023',
         publications: [
             {
+                title: 'Predicting a robot\'s position on a football field by training a machine learning algorithm on artificially generated data',
+                authors: [
+                    'Lex Bolt'
+                ],
+                date: '2023-06-23',
+                year: '2023',
+                type: 'misc',
+                tags: ['BSc', 'Localization', 'Unity'],
+                id: 'Bolt2023',
+                file: '/publications/2023/Bachelorthesis_Lex_Bolt.pdf',
+            },
+            {
+                title: 'Exploring the Effectiveness of Object Detection Training in Virtual Environments',
+                authors: [
+                    'Tobie Werner'
+                ],
+                date: '2023-6-23',
+                year: '2023',
+                type: 'misc',
+                tags: ['BSc', 'YOLO', 'Unity'],
+                id: 'Werner2023',
+                file: '/publications/2023/Bachelor_Thesis_Tobie_Werner.pdf',
+            },
+            {
                 title: 'Neural Factorization of Shape and Reflectance of a football Under an Unknown Illumination',
                 authors: [
                     'Xavier Monté'
