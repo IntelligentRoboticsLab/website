@@ -69,7 +69,7 @@ export const Publication = z.object({
 export const toBibtex = (pub: IPublication): string => {
   const type = pub.type ?? "misc";
 
-  let bibtex = `@${type} {
+  let bibtex = `@${type} {${pub.id},
   title = {${pub.title}},
   author = {${pub.authors.join(" and ")}},
   year = {${pub.year}},
