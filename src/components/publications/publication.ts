@@ -71,7 +71,7 @@ export const toBibtex = (pub: IPublication): string => {
 
   let bibtex = `@${type} {
   title = {${pub.title}},
-  author${pub.authors.length > 1 ? "s" : ""} = {${pub.authors.join(", ")}},
+  author = {${pub.authors.join(" and ")}},
   year = {${pub.year}},
   date = {${pub.date}},
   tags = {${pub.tags.join(", ")}}`;
