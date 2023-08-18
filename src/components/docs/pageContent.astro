@@ -1,6 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro";
-import type { Frontmatter,KnownLanguageCode } from "../../config";
+import type { Frontmatter, KnownLanguageCode } from "../../config";
 import { getIsRtlFromLangCode } from "../../languages";
 import OnThisPageLinks from "../navigation/OnThisPageLinks";
 import BreadCrumbs from "./breadCrumbs";
@@ -21,9 +21,6 @@ const isRtl = getIsRtlFromLangCode((lang || "en") as KnownLanguageCode);
 
 <article id="article" class="flex w-full max-w-screen-lg flex-col">
   {lang && lang !== "en"}
-  <div class="mb-2 h-10">
-    {Astro.url.pathname === "/en/foundation/anbi" ?  <></> : <BreadCrumbs client:only />}
-  </div>
   <OnThisPageLinks
     client:media="(max-width: 1024px)"
     headings={headings}

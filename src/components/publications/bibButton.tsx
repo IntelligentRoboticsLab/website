@@ -22,7 +22,7 @@ export default function BibButton(props: IBibButtonProps) {
             }, 1000);
           }
         }}
-        className="flex w-auto flex-row gap-2 rounded-lg bg-dnt-orange-200 py-1 px-2 hover:cursor-pointer hover:bg-dnt-orange-200/50 dark:bg-dnt-orange-800/50 hover:dark:bg-dnt-orange-700/50 "
+        className="flex w-auto flex-row gap-2 rounded-lg bg-dnt-orange-200 px-2 py-1 hover:cursor-pointer hover:bg-dnt-orange-200/50 dark:bg-dnt-orange-800/50 hover:dark:bg-dnt-orange-700/50 "
       >
         {props.text}
         <svg
