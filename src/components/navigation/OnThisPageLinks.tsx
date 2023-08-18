@@ -116,7 +116,7 @@ export default function OnThisPageLinks({
                       {({ active }) => (
                         <a
                           className={clsx(
-                            "line-clamp-1 text-md block w-full py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-50",
+                            "text-md line-clamp-1 block w-full py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-50",
                             isLtr && (heading.depth === 2 ? "pl-3" : "pl-8"),
                             isRtl && (heading.depth === 2 ? "pr-3" : "pr-8"),
                             {
