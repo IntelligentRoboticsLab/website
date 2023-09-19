@@ -32,6 +32,13 @@ const navbarLinks: Array<{ pattern: RegExp; href: string; label: string }> = [
     href: "/en/introduction",
     label: "Docs",
   },
+  {
+    pattern: new RegExp(
+      "^\b$" /* dont want the join button to appear selected */
+    ),
+    href: "https://join.dutchnao.team/",
+    label: "Join",
+  },
 
   // {
   //   href: "/en/test-heading-2/boring-page",
