@@ -1,0 +1,71 @@
+---
+import HeadCommon from "../components/headCommon.astro";
+import HeadSeo from "../components/headSeo.astro";
+import LeftSidebar from "../components/navigation/leftSidebar.astro";
+import Navbar from "../components/navigation/navbar.astro";
+import { SITE } from "../config";
+import "../styles/accessibility.css";
+import "../styles/algolia/style.css";
+import "../styles/global.css";
+
+import "@fontsource/inter/variable.css";
+import JumpToContent from "../components/accessibility/jumpToContent.astro";
+
+export interface Props {
+  isNotFound?: boolean;
+  forceLightTheme?: boolean;
+}
+
+const currentPage = Astro.url.pathname;
+
+const { isNotFound } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html dir="ltr" lang="en-us" class={`initial ${isNotFound ? "not-found" : ""}`}>
+  <head>
+    <HeadCommon />
+    <HeadSeo type="website" />
+    <title>{SITE.title}</title>
+
+    <script is:inline>
+      const html = document.documentElement;
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme");
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      if (theme === "light") {
+        html.classList.remove("dark");
+        html.classList.add("light");
+      } else {
+        html.classList.add("dark");
+        html.classList.remove("light");
+      }
+    </script>
+  </head>
+  <body class="min-h-screen bg-default">
+    <JumpToContent />
+    <Navbar isNotFound={isNotFound || false} />
+    <aside id="grid-left" class="hidden" title="Site Navigation">
+      <div class="fixed left-0 top-0 z-30 h-screen w-screen bg-default">
+        <div class="fixed top-24 h-[calc(100%-96px)] w-full pb-16">
+          <LeftSidebar
+            currentPage={currentPage}
+            isNotFound={isNotFound || false}
+          />
+        </div>
+      </div>
+    </aside>
+    <main id="content">
+      <slot />
+    </main>
+  </body>
+</html>

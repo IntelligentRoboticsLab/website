@@ -1,0 +1,34 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<div class="flex justify-center px-8 py-8">
+  <h1 class="text-stone-400 dark:text-stone-500">
+    Made with love, robots <span
+      class="hover:cursor-pointer"
+      id="dont-click-this-secret-button">🤖</span
+    > and Dr. Pepper - Dutch Nao Team {currentYear}
+  </h1>
+</div>
+
+<script>
+  import confetti from "canvas-confetti";
+  const button = document.getElementById("dont-click-this-secret-button");
+
+  if (button) {
+    button.addEventListener("click", () => {
+      confetti({
+        particleCount: 1e3,
+        angle: 360,
+        spread: 360,
+        origin: { x: 0 },
+      });
+      confetti({
+        particleCount: 1e3,
+        angle: 0,
+        spread: 360,
+        origin: { x: 1 },
+      });
+    });
+  }
+</script>
