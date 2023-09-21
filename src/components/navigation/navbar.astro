@@ -14,30 +14,39 @@ const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
 // const langCode = getLanguageFromURL(pathname);
 
-const navbarLinks: Array<{ pattern: RegExp; href: string; label: string }> = [
+const navbarLinks: Array<{
+  pattern: RegExp;
+  position: "left" | "right";
+  href: string;
+  label: string;
+}> = [
   {
     pattern: new RegExp(
       "^\b$" /* dont want the home button to appear selected */
     ),
+    position: "left",
     href: "/",
     label: "Home",
   },
   {
     pattern: new RegExp("^/publications"),
     href: "/publications",
+    position: "left",
     label: "Publications",
   },
   {
     pattern: new RegExp("^/en"),
     href: "/en/introduction",
+    position: "left",
     label: "Docs",
   },
   {
     pattern: new RegExp(
       "^\b$" /* dont want the join button to appear selected */
     ),
+    position: "right",
     href: "https://join.dutchnao.team/",
-    label: "Join",
+    label: "Join us",
   },
 
   // {
@@ -1225,21 +1234,25 @@ const navbarLinks: Array<{ pattern: RegExp; href: string; label: string }> = [
       </div>
       <div class="ml-4 hidden flex-row gap-2 min-[500px]:flex">
         {
-          navbarLinks.map((navbarLink) => (
-            <a
-              class={clsx(
-                "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 hover:no-underline dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
-                {
-                  "bg-dnt-orange-200/50 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50":
-                    navbarLink.pattern.exec(currentPage),
+          navbarLinks
+            .filter((navbarLink) => navbarLink.position === "left")
+            .map((navbarLink) => (
+              <a
+                class={clsx(
+                  "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 hover:no-underline dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
+                  {
+                    "bg-dnt-orange-200/50 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50":
+                      navbarLink.pattern.exec(currentPage),
+                  }
+                )}
+                aria-current={
+                  navbarLink.href === currentPage ? "page" : "false"
                 }
-              )}
-              aria-current={navbarLink.href === currentPage ? "page" : "false"}
-              href={navbarLink.href}
-            >
-              {navbarLink.label}
-            </a>
-          ))
+                href={navbarLink.href}
+              >
+                {navbarLink.label}
+              </a>
+            ))
         }
       </div>
       <div class="flex flex-grow"></div>
@@ -1247,13 +1260,37 @@ const navbarLinks: Array<{ pattern: RegExp; href: string; label: string }> = [
     <div class="flex flex-grow items-center justify-end gap-4">
       <!-- <GithubIcon /> -->
       <!-- {!isLanding && <LanguageSelect language={langCode} client:load />} -->
-      <div
+      <!-- <div
         class={clsx("text-center", {
           // hidden: isLanding,
         })}
-      >
-        <ThemeToggleButton />
+      > -->
+      <div class="ml-4 hidden flex-grow flex-row gap-2 min-[500px]:flex">
+        {
+          navbarLinks
+            .filter((navbarLink) => navbarLink.position === "right")
+            .map((navbarLink) => (
+              <a
+                class={clsx(
+                  "relative inline-flex items-center whitespace-nowrap rounded-full border bg-dnt-orange-200/50 px-4 py-2 text-dnt-orange-800 hover:bg-dnt-orange-200/75 hover:no-underline dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:text-dnt-orange-100 dark:hover:border-dnt-orange-200/50",
+                  {
+                    "bg-dnt-orange-200/10 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/50 dark:hover:border-dnt-orange-200/50":
+                      navbarLink.pattern.exec(currentPage),
+                  }
+                )}
+                aria-current={
+                  navbarLink.href === currentPage ? "page" : "false"
+                }
+                href={navbarLink.href}
+              >
+                {navbarLink.label}
+              </a>
+            ))
+        }
       </div>
+
+      <ThemeToggleButton />
+      <!-- </div> -->
       <div class={clsx([{ hidden: isLanding }])}>
         <SidebarToggle isLanding={isLanding} />
       </div>
