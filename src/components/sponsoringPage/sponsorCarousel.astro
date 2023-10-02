@@ -1,0 +1,19 @@
+---
+import SponsorSlider from "./sponsors/sponsorSlider.astro";
+import { SponsorList } from "./sponsors/types";
+
+
+---
+<div
+  class="lg:items-begin my-16 flex flex-col items-center justify-center lg:flex-row"
+>
+  <div class=" max-w-4xl flex-col">
+    <h1
+      class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
+    >
+      Our sponsors
+    </h1>
+    <SponsorSlider sponsors = {SponsorList}></SponsorSlider>
+  </div>
+  <!-- <img src="/images/Team_Complete.webp" width="800px" alt="DNT team image" /> -->
+</div>

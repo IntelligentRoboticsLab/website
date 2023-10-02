@@ -1,0 +1,42 @@
+---
+import type { Sponsor } from "./types";
+import { Image } from "@astrojs/image/components";
+
+const {
+    name,
+    description,
+    url,
+    logo,
+} = Astro.props as Sponsor;
+---
+
+<article
+  class="flex flex-wrap items-start rounded-lg border border-dnt-orange-200/20 bg-white/10 bg-cover px-4 pb-1 pt-4 transition-colors hover:border-dnt-orange-300/50 hover:bg-white/20 hover:no-underline"
+>
+  <Image
+    src={logo}
+    width={48}
+    height={48}
+    class="mr-3 h-12 w-12 rounded-full"
+    alt={`@${name}'s logo`}
+  />
+  <div class="flex flex-1 flex-wrap justify-start">
+    <div class="flex flex-1 items-center">
+      <div>
+        <h3 class="mr-2 font-bold hover:underline">
+          <a
+            href={`${url}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm hover:text-[#1da1f2] sm:text-base"
+          >
+            {name}
+          </a>
+        </h3>
+      </div>
+    </div>
+  </div>
+  <div class="w-full">
+    <p class="my-1 whitespace-pre-line text-sm xl:text-base">{description}</p>
+  </div>
+</article>
