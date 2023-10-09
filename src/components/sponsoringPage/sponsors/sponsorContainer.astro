@@ -1,0 +1,23 @@
+---
+import SponsorCard from "./sponsorCard.astro";
+import type { Sponsor } from "./types";
+
+export interface Props {
+  sponsors: Sponsor[];
+  level: Number;
+}
+
+const { sponsors } = Astro.props as Props;
+---
+
+<div class="w-full cursor-grab overflow-hidden rounded-lg" id="sponsor-slider">
+  <div class="flex w-full flex-wrap content-center justify-between">
+    {
+      sponsors.map((sponsor) => (
+        <div class="max-w-lg w-4/7">
+          <SponsorCard {...sponsor} />
+        </div>
+      ))
+    }
+  </div>
+</div>
