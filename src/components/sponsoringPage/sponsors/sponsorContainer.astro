@@ -7,14 +7,27 @@ export interface Props {
   level: Number;
 }
 
-const { sponsors } = Astro.props as Props;
+const { sponsors, level } = Astro.props as Props;
+
+let levelstyleInner = "max-w-lg w-4/7";
+let levelstyleOuter = " flex-wrap justify-between ";
+if (level == 1) {
+  levelstyleInner = "w-full m-5 max-w-7xl";
+  levelstyleOuter = " flex-col justify-center items-center";
+} else if (level == 2) {
+  levelstyleInner = "w-full m-5 max-w-5xl";
+  levelstyleOuter = " flex-col justify-center items-center";
+} else if (level == 3) {
+  let levelstyleInner = "max-w-lg w-4/7";
+  let levelstyleOuter = " max-w-2xl flex-wrap justify-between ";
+}
 ---
 
-<div class="w-full cursor-grab overflow-hidden rounded-lg" id="sponsor-slider">
-  <div class="flex w-full flex-wrap content-center justify-between">
+<div class="w-full cursor-grab overflow-hidden rounded-lg">
+  <div class=`flex w-full content-center ${levelstyleOuter}`>
     {
       sponsors.map((sponsor) => (
-        <div class="max-w-lg w-4/7">
+        <div class={levelstyleInner}>
           <SponsorCard {...sponsor} />
         </div>
       ))

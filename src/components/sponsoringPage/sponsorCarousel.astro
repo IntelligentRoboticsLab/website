@@ -1,6 +1,6 @@
 ---
 import SponsorContainer from "./sponsors/sponsorContainer.astro";
-import { SponsorListLevel1, SponsorListLevel2 } from "./sponsors/types";
+import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3 } from "./sponsors/types";
 
 
 ---
@@ -15,7 +15,7 @@ import { SponsorListLevel1, SponsorListLevel2 } from "./sponsors/types";
   <div
     class="lg:items-begin my-16 items-center justify-center w-full space-y-28"
   >
-    <div class=" min-w-4xl">
+    <div class=" ">
       <h1
         class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
@@ -23,7 +23,7 @@ import { SponsorListLevel1, SponsorListLevel2 } from "./sponsors/types";
       </h1>
       <SponsorContainer sponsors = {SponsorListLevel1} level = {1}></SponsorContainer>
     </div>
-    <div class=" min-w-4xl">
+    <div class=" ">
       <h1
         class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
@@ -31,15 +31,15 @@ import { SponsorListLevel1, SponsorListLevel2 } from "./sponsors/types";
       </h1>
       <SponsorContainer sponsors = {SponsorListLevel2} level = {2}></SponsorContainer>
     </div>
-    <div class=" min-w-4xl">
+    <div class=" ">
       <h1
         class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
         Silver
       </h1>
-      <SponsorContainer sponsors = {SponsorListLevel1} level = {3}></SponsorContainer>
+      <SponsorContainer sponsors = {SponsorListLevel3} level = {3}></SponsorContainer>
     </div>
-    <div class=" min-w-4xl">
+    <div class=" ">
       <h1
         class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
@@ -47,7 +47,7 @@ import { SponsorListLevel1, SponsorListLevel2 } from "./sponsors/types";
       </h1>
       <SponsorContainer sponsors = {SponsorListLevel1} level = {3}></SponsorContainer>
     </div>
-    <div class=" min-w-4xl">
+    <div class=" ">
       <h1
         class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
