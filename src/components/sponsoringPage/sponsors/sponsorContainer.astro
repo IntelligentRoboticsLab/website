@@ -17,14 +17,19 @@ if (level == 1) {
 } else if (level == 2) {
   levelstyleInner = "w-full m-5 max-w-5xl";
   levelstyleOuter = " flex-col justify-center items-center";
-} else if (level == 3) {
-  let levelstyleInner = "max-w-lg w-4/7";
-  let levelstyleOuter = " max-w-2xl flex-wrap justify-between ";
+} else if (level == 3 || level == 4) {
+  levelstyleInner = "max-w-md w-3/7 m-3";
+  levelstyleOuter = " justify-center flex-wrap";
 }
 ---
 
-<div class="w-full cursor-grab overflow-hidden rounded-lg">
+<div class=`w-full cursor-grab overflow-hidden rounded-lg`>
   <div class=`flex w-full content-center ${levelstyleOuter}`>
+    <p class=`${sponsors.length == 0 ? " " : "hidden"}`>No one in this catogory is sponsoring us yet. Do you want to be the first? Mail at: <a
+      href="mailto:info@dutchnaoteam.nl"
+      class="text-black underline hover:text-dnt-orange-400 hover:decoration-wavy dark:text-white"
+      >info@dutchnaoteam.nl</a
+    ></p>
     {
       sponsors.map((sponsor) => (
         <div class={levelstyleInner}>

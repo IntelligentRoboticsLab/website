@@ -1,14 +1,46 @@
 ---
+import type { Sponsor } from "./types";
+import { Image } from "@astrojs/image/components";
+import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLevel4} from "./sponsors/types";
+
+let sponsorsLists = [SponsorListLevel1, SponsorListLevel2, SponsorListLevel3, SponsorListLevel4];
 const currentYear = new Date().getFullYear();
 ---
 
-<div class="flex justify-center px-8 py-8">
-  <h1 class="text-stone-400 dark:text-stone-500">
+<div class="flex flex-col justify-center align-center px-8 py-8">
+  <h1 class="text-stone-400 dark:text-stone-500 text-center">
     Made with love, robots <span
       class="hover:cursor-pointer"
       id="dont-click-this-secret-button">🤖</span
     > and Dr. Pepper - Dutch Nao Team {currentYear}
   </h1>
+  <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
+  <div class="flex flex-row justify-center align-center">
+    {
+      sponsorsLists.map((sponsors) => (
+        sponsors.map((sponsor: Sponsor) => (
+          <a href={sponsor.url} target="_blank">
+          <Image
+            src={sponsor.logo}
+            width={40}
+            height={40}
+            class="bg-white m-3 w-10 h-10"
+            alt={`@${sponsor.name}'s logo`}
+          />
+        </a>
+        ))
+
+      ))
+    }
+  </div>
+  <p class="text-center text-stone-400 dark:text-stone-500">
+    Want to join the crew, sponsor us, or have any other questions? Send us
+    an email at <a
+      href="mailto:info@dutchnaoteam.nl"
+      class="text-black underline hover:text-dnt-orange-400 hover:decoration-wavy dark:text-white"
+      >info@dutchnaoteam.nl</a
+    >
+  </p>
 </div>
 
 <script>

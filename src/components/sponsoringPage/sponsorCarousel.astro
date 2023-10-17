@@ -1,6 +1,6 @@
 ---
 import SponsorContainer from "./sponsors/sponsorContainer.astro";
-import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3 } from "./sponsors/types";
+import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLevel4} from "./sponsors/types";
 
 
 ---
@@ -13,47 +13,40 @@ import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3 } from "./spons
   Our sponsors
   </h1>
   <div
-    class="lg:items-begin my-16 items-center justify-center w-full space-y-28"
+    class="lg:items-begin my-16 items-center justify-center w-full space-y-12"
   >
-    <div class=" ">
+    <div>
       <h1
-        class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
+        class="mb-2 text-center text-3xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
         Platinum
       </h1>
       <SponsorContainer sponsors = {SponsorListLevel1} level = {1}></SponsorContainer>
     </div>
-    <div class=" ">
+    <div>
       <h1
-        class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
+        class="mb-2 text-center text-3xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
         Gold
       </h1>
       <SponsorContainer sponsors = {SponsorListLevel2} level = {2}></SponsorContainer>
     </div>
-    <div class=" ">
+    <div>
       <h1
-        class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
+        class="mb-2 text-center text-3xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
         Silver
       </h1>
+      <p class=`${SponsorListLevel3.length == 0 ? " " : "hidden"}`>No one in this catogory is sponsoring us yet. Do you want to be the first? Mail at: </p>
       <SponsorContainer sponsors = {SponsorListLevel3} level = {3}></SponsorContainer>
     </div>
-    <div class=" ">
+    <div>
       <h1
-        class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
+        class="mb-2 text-center text-3xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
       >
         Bronze
       </h1>
-      <SponsorContainer sponsors = {SponsorListLevel1} level = {3}></SponsorContainer>
-    </div>
-    <div class=" ">
-      <h1
-        class="mb-2 text-center text-5xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
-      >
-        Supporter
-      </h1>
-      <SponsorContainer sponsors = {SponsorListLevel1} level = {3}></SponsorContainer>
+      <SponsorContainer sponsors = {SponsorListLevel4} level = {4}></SponsorContainer>
     </div>
   </div>
   <!-- <img src="/images/Team_Complete.webp" width="800px" alt="DNT team image" /> -->

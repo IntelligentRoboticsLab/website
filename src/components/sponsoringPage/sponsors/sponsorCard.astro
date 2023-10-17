@@ -10,48 +10,46 @@ const {
     level,
 } = Astro.props as Sponsor;
 
-let level2style = "bg-white/10 hover:bg-white/20 hover:no-underline";
-
 let articlestyle = " ";
-let imsize = '100';
+let imsize = 100;
+let namesize = "text-sm"
 
 if (level == 1) {
-  imsize = '120'
+  imsize = 120
   articlestyle = "bg-primary/50 hover:bg-primary/20 hover:no-underline";
 } else if (level == 2) {
   articlestyle = "bg-primary/10 hover:bg-primary/5 hover:no-underline";
+} else if (level == 4) {
+  articlestyle = " flex-col ";
 }
 
-let namesize = "text-sm"
 ---
 
 <a
         href={`${url}`}
         target="_blank"
-        rel="noopener noreferrer"
-        class="text-sm hover:text-[#1da1f2] sm:text-base"
       >
 <article
-  class=`flex flex-wrap items-start rounded-lg border border-dnt-orange-200/20 bg-cover px-4 p-4 transition-colors hover:border-dnt-orange-300/50 ${articlestyle}`
+  class=`items-center flex flex-wrap flex-col ${level != 4 ? "sm:flex-row" : " "} items-start rounded-lg border border-dnt-orange-200/20 bg-cover px-4 p-4 transition-colors hover:border-dnt-orange-300/50 ${articlestyle}`
 >
   <Image
     src={logo}
     width={imsize}
     height={imsize}
-    class=`mr-3 h-${imsize} w-${imsize} bg-white pr-10`
+    class=`bg-white ${level == 4 ? "" : "mr-3 pr-10"} h-${imsize} w-${imsize}`
     alt={`@${name}'s logo`}
   />
-  <div class="flex flex-1 flex-wrap justify-start pl-10">
-    <h3 class="mr-2 font-bold hover:underline">
+  <div class=`flex flex-1 flex-wrap ${level == 4 ? "justify-start" : "pl-10"}`>
+    <h3 class=`${level == 4 ? " t" : "mr-2"} font-bold hover:underline ${level == 1 || level == 2 || level == 3 ? "text-xl" : ""}`>
       <a
         href={`${url}`}
         target="_blank"
         rel="noopener noreferrer"
-        class="text-sm hover:text-[#1da1f2] sm:text-base"
+        class=`${level == 1 || level == 2 || level == 3 ? "text-xl" : namesize}`
       >
-        {name}
+      {name}
       </a>
     </h3>
-    <p class="my-1 whitespace-pre-line text-sm xl:text-base truncate">{description}</p>
+    <p class=`my-1 whitespace-pre-line text-sm xl:text-base truncate ${level == 4 ? ' hidden ' : ' '}`>{description}</p>
   </div>
 </article>
