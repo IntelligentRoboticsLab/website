@@ -1,6 +1,7 @@
 ---
 import SponsorCard from "./sponsorCard.astro";
 import type { Sponsor } from "./types";
+import { SponsorLevels } from "./types";
 
 export interface Props {
   sponsors: Sponsor[];
@@ -11,13 +12,13 @@ const { sponsors, level } = Astro.props as Props;
 
 let levelstyleInner = "max-w-lg w-4/7";
 let levelstyleOuter = " flex-wrap justify-between ";
-if (level == 1) {
+if (level == SponsorLevels.Platinum) {
   levelstyleInner = "w-full m-5 max-w-7xl";
   levelstyleOuter = " flex-col justify-center items-center";
-} else if (level == 2) {
+} else if (level == SponsorLevels.Gold) {
   levelstyleInner = "w-full m-5 max-w-5xl";
   levelstyleOuter = " flex-col justify-center items-center";
-} else if (level == 3 || level == 4) {
+} else if (level == SponsorLevels.Silver || level == SponsorLevels.Bronze) {
   levelstyleInner = "max-w-md w-3/7 m-3";
   levelstyleOuter = " justify-center flex-wrap";
 }

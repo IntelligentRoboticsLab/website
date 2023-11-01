@@ -1,5 +1,6 @@
 ---
 import SponsorContainer from "./sponsors/sponsorContainer.astro";
+import { SponsorLevels } from "../sponsoringPage/sponsors/types";
 import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLevel4} from "../../utils/sponsors";
 
 
@@ -21,7 +22,7 @@ import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLe
       >
         Platinum
       </h1>
-      <SponsorContainer sponsors = {SponsorListLevel1} level = {1}></SponsorContainer>
+      <SponsorContainer sponsors = {SponsorListLevel1} level = {SponsorLevels.Platinum}></SponsorContainer>
     </div>
     <div>
       <h1
@@ -29,7 +30,7 @@ import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLe
       >
         Gold
       </h1>
-      <SponsorContainer sponsors = {SponsorListLevel2} level = {2}></SponsorContainer>
+      <SponsorContainer sponsors = {SponsorListLevel2} level = {SponsorLevels.Gold}></SponsorContainer>
     </div>
     <div>
       <h1
@@ -38,7 +39,7 @@ import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLe
         Silver
       </h1>
       <p class=`${SponsorListLevel3.length == 0 ? " " : "hidden"}`>No one in this catogory is sponsoring us yet. Do you want to be the first? Mail at: </p>
-      <SponsorContainer sponsors = {SponsorListLevel3} level = {3}></SponsorContainer>
+      <SponsorContainer sponsors = {SponsorListLevel3} level = {SponsorLevels.Silver}></SponsorContainer>
     </div>
     <div>
       <h1
@@ -46,7 +47,7 @@ import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLe
       >
         Bronze
       </h1>
-      <SponsorContainer sponsors = {SponsorListLevel4} level = {4}></SponsorContainer>
+      <SponsorContainer sponsors = {SponsorListLevel4} level = {SponsorLevels.Bronze}></SponsorContainer>
     </div>
   </div>
   <!-- <img src="/images/Team_Complete.webp" width="800px" alt="DNT team image" /> -->

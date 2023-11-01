@@ -1,5 +1,6 @@
 ---
 import type { Sponsor } from "./types";
+import { SponsorLevels } from "./types";
 import { Image } from "@astrojs/image/components";
 
 const {
@@ -14,12 +15,12 @@ let articlestyle = " ";
 let imsize = 100;
 let namesize = "text-sm"
 
-if (level == 1) {
+if (level == SponsorLevels.Platinum) {
   imsize = 120
   articlestyle = "bg-primary/50 hover:bg-primary/20 hover:no-underline";
-} else if (level == 2) {
+} else if (level == SponsorLevels.Gold) {
   articlestyle = "bg-primary/10 hover:bg-primary/5 hover:no-underline";
-} else if (level == 4) {
+} else if (level == SponsorLevels.Bronze) {
   articlestyle = " flex-col ";
 }
 
@@ -30,26 +31,26 @@ if (level == 1) {
         target="_blank"
       >
 <article
-  class=`items-center flex flex-wrap flex-col ${level != 4 ? "sm:flex-row" : " "} items-start rounded-lg border border-dnt-orange-200/20 bg-cover px-4 p-4 transition-colors hover:border-dnt-orange-300/50 ${articlestyle}`
+  class=`items-center flex flex-wrap flex-col ${level != SponsorLevels.Bronze ? "sm:flex-row" : " "} items-start rounded-lg border border-dnt-orange-200/20 bg-cover px-4 p-4 transition-colors hover:border-dnt-orange-300/50 ${articlestyle}`
 >
   <Image
     src={logo}
     width={imsize}
     height={imsize}
-    class=`bg-white ${level == 4 ? "" : "mr-3 pr-10"} h-${imsize} w-${imsize}`
+    class=`bg-white ${level == SponsorLevels.Bronze ? "" : "mr-3 pr-10"} h-${imsize} w-${imsize}`
     alt={`@${name}'s logo`}
   />
-  <div class=`flex flex-1 flex-wrap ${level == 4 ? "justify-start" : "pl-10"}`>
-    <h3 class=`${level == 4 ? " t" : "mr-2"} font-bold hover:underline ${level == 1 || level == 2 || level == 3 ? "text-xl" : ""}`>
+  <div class=`flex flex-1 flex-wrap ${level == SponsorLevels.Bronze ? "justify-start" : "pl-10"}`>
+    <h3 class=`${level == SponsorLevels.Bronze ? " t" : "mr-2"} font-bold hover:underline ${level == SponsorLevels.Platinum || level == SponsorLevels.Gold || level == SponsorLevels.Silver ? "text-xl" : ""}`>
       <a
         href={`${url}`}
         target="_blank"
         rel="noopener noreferrer"
-        class=`${level == 1 || level == 2 || level == 3 ? "text-xl" : namesize}`
+        class=`${level != SponsorLevels.Bronze ? "text-xl" : namesize}`
       >
       {name}
       </a>
     </h3>
-    <p class=`my-1 whitespace-pre-line text-sm xl:text-base truncate ${level == 4 ? ' hidden ' : ' '}`>{description}</p>
+    <p class=`my-1 whitespace-pre-line text-sm xl:text-base truncate ${level == SponsorLevels.Bronze ? ' hidden ' : ' '}`>{description}</p>
   </div>
 </article>
