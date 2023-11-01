@@ -1,7 +1,7 @@
 ---
-import type { Sponsor } from "./types";
+import type { Sponsor } from "../sponsoringPage/sponsors/types";
 import { Image } from "@astrojs/image/components";
-import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLevel4} from "./sponsors/types";
+import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLevel4} from "../../utils/sponsors";
 
 let sponsorsLists = [SponsorListLevel1, SponsorListLevel2, SponsorListLevel3, SponsorListLevel4];
 const currentYear = new Date().getFullYear();
