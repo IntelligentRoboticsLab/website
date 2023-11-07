@@ -7,21 +7,25 @@ const {
     name,
     description,
     url,
+    width,
+    height,
     logo,
     level,
 } = Astro.props as Sponsor;
 
 let articlestyle = " ";
-let imsize = 100;
+let imsize = 1;
 let namesize = "text-sm"
 
 if (level == SponsorLevels.Platinum) {
-  imsize = 120
-  articlestyle = "bg-primary/50 hover:bg-primary/20 hover:no-underline";
+  imsize = 1.2
+  articlestyle = "bg-gradient-to-br from-platinum-1 via-platinum-2 to-platinum-3 hover:no-underline"; //bg-primary/50 hover:bg-primary/20 hover:no-underline
 } else if (level == SponsorLevels.Gold) {
-  articlestyle = "bg-primary/10 hover:bg-primary/5 hover:no-underline";
+  articlestyle = "bg-gradient-to-br from-gold-1 via-gold-2 to-gold-3 hover:no-underline";
+} else if (level == SponsorLevels.Silver) {
+  articlestyle = "bg-gradient-to-br from-silver-1 via-silver-2 to-silver-3";
 } else if (level == SponsorLevels.Bronze) {
-  articlestyle = " flex-col ";
+  articlestyle = " bg-gradient-to-br from-bronze-1 via-bronze-2 to-bronze-3 flex-col ";
 }
 
 ---
@@ -31,12 +35,12 @@ if (level == SponsorLevels.Platinum) {
         target="_blank"
       >
 <article
-  class=`items-center flex flex-wrap flex-col ${level != SponsorLevels.Bronze ? "sm:flex-row" : " "} items-start rounded-lg border border-dnt-orange-200/20 bg-cover px-4 p-4 transition-colors hover:border-dnt-orange-300/50 ${articlestyle}`
+  class=`items-center flex flex-wrap flex-col ${level != SponsorLevels.Bronze ? "sm:flex-row" : " "} items-start rounded-lg bg-cover px-4 p-4 transition-colors hover:animate-pulse text-sponsor-text ${articlestyle}`
 >
   <Image
     src={logo}
-    width={imsize}
-    height={imsize}
+    width={width * imsize}
+    height={height * imsize}
     class=`bg-white ${level == SponsorLevels.Bronze ? "" : "mr-3 pr-10"} h-${imsize} w-${imsize}`
     alt={`@${name}'s logo`}
   />

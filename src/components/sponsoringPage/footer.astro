@@ -5,6 +5,7 @@ import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLe
 
 let sponsorsLists = [SponsorListLevel1, SponsorListLevel2, SponsorListLevel3, SponsorListLevel4];
 const currentYear = new Date().getFullYear();
+const imsize = 0.5;
 ---
 
 <div class="flex flex-col justify-center align-center px-8 py-8">
@@ -15,16 +16,16 @@ const currentYear = new Date().getFullYear();
     > and Dr. Pepper - Dutch Nao Team {currentYear}
   </h1>
   <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
-  <div class="flex flex-row justify-center align-center">
+  <div class="flex flex-row justify-center align-center flex-wrap">
     {
       sponsorsLists.map((sponsors) => (
         sponsors.map((sponsor: Sponsor) => (
           <a href={sponsor.url} target="_blank">
           <Image
             src={sponsor.logo}
-            width={40}
-            height={40}
-            class="bg-white m-3 w-10 h-10"
+            width={sponsor.width * imsize}
+            height={sponsor.height * imsize}
+            class="bg-white m-3"
             alt={`@${sponsor.name}'s logo`}
           />
         </a>

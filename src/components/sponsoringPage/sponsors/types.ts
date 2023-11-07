@@ -10,5 +10,7 @@ export interface Sponsor {
     description: string;
     url: string;
     logo: string;
-    level: number; // high is 0, low is 3
+    width: number,  // if we store images in the public folder, this is needed
+    height: number, // to let astro Image know the proportions
+    level: number;
   }
