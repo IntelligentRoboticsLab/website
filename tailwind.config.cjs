@@ -24,7 +24,7 @@ module.exports = {
         success: "rgb(var(--color-success) / <alpha-value>)",
         info: "rgb(var(--color-info) / <alpha-value>)",
 
-        "sponsor-text": "#351f13",
+        "partner-text": "#EE8E2E",
         platinum: {
           1: "#f2f1f0",
           2: "#E5E4E2",
