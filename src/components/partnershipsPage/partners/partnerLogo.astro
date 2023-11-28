@@ -8,6 +8,7 @@ const {
     url,
     width,
     height,
+    img_multiplier,
     logo,
     level,
 } = Astro.props as Partner;
@@ -15,11 +16,11 @@ const {
 let imsize = 1;
 
 if (level == PartnerLevels.Platinum) {
-    imsize = 3;
+    imsize = 4;
 } else if (level == PartnerLevels.Gold) {
-    imsize = 2.3;
+    imsize = 3;
 } else if (level == PartnerLevels.Silver) {
-    imsize = 1.8;
+    imsize = 2;
 } else if (level == PartnerLevels.Bronze) {
     imsize = 1.5;
 }
@@ -33,8 +34,8 @@ if (level == PartnerLevels.Platinum) {
 <div>
   <Image
     src={logo}
-    width={width * imsize}
-    height={height * imsize}
+    width={imsize * img_multiplier}
+    height={height/width * imsize * img_multiplier}
     class=`h-${imsize} w-${imsize} bg-white`
     alt={`@${name}'s logo`}
   />

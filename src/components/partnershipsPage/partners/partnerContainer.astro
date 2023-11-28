@@ -12,31 +12,33 @@ const { partners, level } = Astro.props as Props;
 
 let levelstyleInner = "m-8";
 let levelstyleOuter = " flex-row justify-center items-center h-3/4";
-let height = "h-48";
+let margins = "m-10 mb-24 mt-12";
 let levelName = "Platinum";
 if (level == PartnerLevels.Platinum) {
-  height = " h-72";
+  margins = "m-10 mb-24";
 } else if (level == PartnerLevels.Gold) {
-  height = " h-60";
+  margins = "m-10 mb-24";
   levelName = "Gold";
 } else if (level == PartnerLevels.Silver) {
+  margins = "m-10 mb-24";
   levelName = "Silver";
 } else if (level == PartnerLevels.Bronze) {
+  margins = "m-10 mb-0";
   levelName = "Bronze";
 }
 ---
 
-<div class=`${height}`>
+<div class=`${margins}`>
   <h1
         class="mb-2 text-center text-3xl font-bold text-partner-text"
       >
         {levelName}
       </h1>
   <div class=`flex w-full content-center ${levelstyleOuter}`>
-    <p class=`${partners.length == 0 ? " " : "hidden"}`>We don't have partners in this catogory yet. Do you want to be the first? Mail at: <a
-      href="mailto:info@dutchnaoteam.nl"
-      class="text-black underline hover:text-partner-text hover:decoration-wavy dark:text-white"
-      >info@dutchnaoteam.nl</a
+    <p class=`${partners.length == 0 ? " " : "hidden"} mt-8`>We don't have partners in this catogory yet. Do you want to be the first? Mail at: <a
+      href="mailto:partnerships@dutchnaoteam.nl"
+      class="text-partner-text underline hover:text-partner-text hover:decoration-wavy dark:text-white"
+      >partnerships@dutchnaoteam.nl</a
     ></p>
     {
       partners.map((partner) => (
