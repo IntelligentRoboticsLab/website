@@ -1,9 +1,9 @@
 ---
-import type { Sponsor } from "../sponsoringPage/sponsors/types";
+import type { Partner } from "./partners/types";
 import { Image } from "@astrojs/image/components";
-import { SponsorListLevel1, SponsorListLevel2, SponsorListLevel3,  SponsorListLevel4} from "../../utils/sponsors";
+import { PartnerListLevel1, PartnerListLevel2, PartnerListLevel3,  PartnerListLevel4} from "../../utils/partners";
 
-let sponsorsLists = [SponsorListLevel1, SponsorListLevel2, SponsorListLevel3, SponsorListLevel4];
+let partnersLists = [PartnerListLevel1, PartnerListLevel2, PartnerListLevel3, PartnerListLevel4];
 const currentYear = new Date().getFullYear();
 const imsize = 0.5;
 ---
@@ -18,15 +18,15 @@ const imsize = 0.5;
   <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
   <div class="flex flex-row justify-center align-center flex-wrap">
     {
-      sponsorsLists.map((sponsors) => (
-        sponsors.map((sponsor: Sponsor) => (
-          <a href={sponsor.url} target="_blank">
+      partnersLists.map((partners) => (
+        partners.map((partner: Partner) => (
+          <a href={partner.url} target="_blank">
           <Image
-            src={sponsor.logo}
-            width={sponsor.width * imsize}
-            height={sponsor.height * imsize}
+            src={partner.logo}
+            width={partner.width * imsize}
+            height={partner.height * imsize}
             class="bg-white m-3"
-            alt={`@${sponsor.name}'s logo`}
+            alt={`@${partner.name}'s logo`}
           />
         </a>
         ))
@@ -35,7 +35,7 @@ const imsize = 0.5;
     }
   </div>
   <p class="text-center text-stone-400 dark:text-stone-500">
-    Want to join the crew, sponsor us, or have any other questions? Send us
+    Want to join the crew, become partners with us, or have any other questions? Send us
     an email at <a
       href="mailto:info@dutchnaoteam.nl"
       class="text-black underline hover:text-dnt-orange-400 hover:decoration-wavy dark:text-white"

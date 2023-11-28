@@ -1,0 +1,49 @@
+---
+import PartnerLogo from "./partnerLogo.astro";
+import type { Partner } from "./types";
+import { PartnerLevels } from "./types";
+
+export interface Props {
+  partners: Partner[];
+  level: Number;
+}
+
+const { partners, level } = Astro.props as Props;
+
+let levelstyleInner = "m-8";
+let levelstyleOuter = " flex-row justify-center items-center h-3/4";
+let height = "h-48";
+let levelName = "Platinum";
+if (level == PartnerLevels.Platinum) {
+  height = " h-72";
+} else if (level == PartnerLevels.Gold) {
+  height = " h-60";
+  levelName = "Gold";
+} else if (level == PartnerLevels.Silver) {
+  levelName = "Silver";
+} else if (level == PartnerLevels.Bronze) {
+  levelName = "Bronze";
+}
+---
+
+<div class=`${height}`>
+  <h1
+        class="mb-2 text-center text-3xl font-bold text-dnt-orange-500 dark:text-dnt-orange-400"
+      >
+        {levelName}
+      </h1>
+  <div class=`flex w-full content-center ${levelstyleOuter}`>
+    <p class=`${partners.length == 0 ? " " : "hidden"}`>We don't have partners in this catogory yet. Do you want to be the first? Mail at: <a
+      href="mailto:info@dutchnaoteam.nl"
+      class="text-black underline hover:text-dnt-orange-400 hover:decoration-wavy dark:text-white"
+      >info@dutchnaoteam.nl</a
+    ></p>
+    {
+      partners.map((partner) => (
+        <div class={levelstyleInner}>
+          <PartnerLogo {...partner} />
+        </div>
+      ))
+    }
+  </div>
+</div>

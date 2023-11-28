@@ -1,11 +1,11 @@
-export enum SponsorLevels {
+export enum PartnerLevels {
   Platinum,
   Gold,
   Silver,
   Bronze
 }
 
-export interface Sponsor {
+export interface Partner {
     name: string;
     description: string;
     url: string;
