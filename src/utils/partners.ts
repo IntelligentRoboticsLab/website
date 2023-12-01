@@ -1,5 +1,5 @@
-import type { Partner } from "../components/PartnershipsPage/partners/types";
-import { PartnerLevels } from "../components/PartnershipsPage/partners/types";
+import type { Partner } from "../components/partnershipsPage/partners/types";
+import { PartnerLevels } from "../components/partnershipsPage/partners/types";
 
   // UNCOMMENT TO TEST THE DIFFERENT LEVELS
   export const PartnerListLevel1: Partner[] = [
