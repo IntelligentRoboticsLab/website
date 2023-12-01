@@ -1,5 +1,7 @@
 ---
-import clsx from "clsx";
+import { clsx } from "clsx";
+import navSVG from "../../utils/menu_fill.svg"
+import closeSVG from "../../utils/close_fill.svg"
 import { checkLanding } from "../../utils/theme";
 import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
@@ -48,27 +50,11 @@ const navbarLinks: Array<{
     href: "https://join.dutchnao.team/",
     label: "Join us",
   },
-
-  // {
-  //   href: "/en/test-heading-2/boring-page",
-  //   label: "Test page",
-  // },
-  // {
-  //   href: "#bruh",
-  //   label: "Contact (todo)",
-  // },
 ];
 ---
 
 <nav
-  class={clsx(
-    "navbar flex flex-col relative justify-between items-center py-1",
-    "transition-colors duration-300"
-    // {
-    //   "z-40 text-slate-50 bg-default": isLanding,
-    //   "transition-colors duration-300": !isLanding,
-    // },
-  )}
+  class= "navbar flex flex-col relative justify-between items-center py-1 transition-colors duration-300"
   aria-label="Global"
 >
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
@@ -1232,7 +1218,7 @@ const navbarLinks: Array<{
           </svg>
         </a>
       </div>
-      <div class="ml-4 hidden flex-row gap-2 min-[500px]:flex">
+      <div class="ml-4 hidden flex-row gap-2 md:flex">
         {
           navbarLinks
             .filter((navbarLink) => navbarLink.position === "left")
@@ -1255,17 +1241,24 @@ const navbarLinks: Array<{
             ))
         }
       </div>
+      <div id="nav-icon" class="md:hidden ml-8">
+        <img
+        src={navSVG}
+        alt="nav icon open"
+        id="nav-open"
+        class=""
+        >
+        <img
+        src={closeSVG}
+        alt="nav icon close"
+        id="nav-close"
+        class="hidden"
+        >
+      </div>
       <div class="flex flex-grow"></div>
     </div>
     <div class="flex flex-grow items-center justify-end gap-4">
-      <!-- <GithubIcon /> -->
-      <!-- {!isLanding && <LanguageSelect language={langCode} client:load />} -->
-      <!-- <div
-        class={clsx("text-center", {
-          // hidden: isLanding,
-        })}
-      > -->
-      <div class="ml-4 hidden flex-grow flex-row gap-2 min-[500px]:flex">
+      <div class="ml-4 hidden flex-grow flex-row gap-2 md:flex">
         {
           navbarLinks
             .filter((navbarLink) => navbarLink.position === "right")
@@ -1290,13 +1283,52 @@ const navbarLinks: Array<{
       </div>
 
       <ThemeToggleButton />
-      <!-- </div> -->
       <div class={clsx([{ hidden: isLanding }])}>
         <SidebarToggle isLanding={isLanding} />
       </div>
-      <!-- <div class="hidden w-full max-w-xs rounded-lg md:block">
-        <Search isLanding={isLanding} client:load />
-      </div> -->
     </div>
   </div>
 </nav>
+<div id="mobile-nav-dropdown" class="flex flex-col hidden">
+  {
+    navbarLinks
+      .filter((navbarLink) => (navbarLink.position === "left" || navbarLink.label === "Join us"))
+      .map((navbarLink) => (
+        <a
+          class={clsx(
+            "relative inline-flex items-center rounded-full border border-transparent px-4 py-2 text-dnt-orange-800 transition-colors hover:bg-dnt-orange-200/50 hover:text-dnt-orange-800 hover:no-underline dark:text-dnt-orange-100 dark:hover:bg-dnt-orange-200/10 dark:hover:text-dnt-orange-300",
+            {
+              "bg-dnt-orange-200/50 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50":
+                navbarLink.pattern.exec(currentPage),
+            }
+          )}
+          aria-current={
+            navbarLink.href === currentPage ? "page" : "false"
+          }
+          href={navbarLink.href}
+        >
+          {navbarLink.label}
+        </a>
+      ))
+  }
+</div>
+
+<script>
+  const navIcon = document.getElementById("nav-icon");
+  const navOpen = document.getElementById("nav-open");
+  const navClose = document.getElementById("nav-close");
+  let navContent = document.getElementById("mobile-nav-dropdown");
+  let hidden = true;
+  if (navIcon) {
+    navIcon.addEventListener("click", () => {
+    hidden = !hidden;
+    if (navContent) {
+      navContent.style.display = hidden ? "none" : "flex";
+      if (navOpen && navClose) {
+        navOpen.style.display = hidden ? "block" : "none";
+        navClose.style.display = hidden ? "none" : "block";
+      }
+    }
+  });
+  }
+</script>
