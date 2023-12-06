@@ -1,0 +1,67 @@
+---
+import type { Partner } from "./partners/types";
+import { Image } from "@astrojs/image/components";
+import { PartnerListLevel1, PartnerListLevel2, PartnerListLevel3,  PartnerListLevel4} from "../../utils/partners";
+
+let partnersLists = [PartnerListLevel1, PartnerListLevel2, PartnerListLevel3, PartnerListLevel4];
+const currentYear = new Date().getFullYear();
+const imsize = 0.5;
+---
+
+<div class="flex flex-col justify-center align-center px-8 py-8">
+  <h1 class="text-stone-400 dark:text-stone-500 text-center">
+    Made with love, robots <span
+      class="hover:cursor-pointer"
+      id="dont-click-this-secret-button">🤖</span
+    > and Dr. Pepper - Dutch Nao Team {currentYear}
+  </h1>
+  <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
+  <div class="flex flex-row justify-center align-center flex-wrap">
+    {
+      partnersLists.map((partners) => (
+        partners.map((partner: Partner) => (
+          <a href={partner.url} target="_blank">
+          <Image
+            src={partner.logo}
+            width={partner.width * imsize}
+            height={partner.height * imsize}
+            class="m-3"
+            alt={`@${partner.name}'s logo`}
+          />
+        </a>
+        ))
+
+      ))
+    }
+  </div>
+  <p class="text-center text-stone-400 dark:text-stone-500">
+    Want to join the crew, become partners with us, or have any other questions? Send us
+    an email at <a
+      href="mailto:info@dutchnaoteam.nl"
+      class="text-black underline hover:text-dnt-orange-400 hover:decoration-wavy dark:text-white"
+      >info@dutchnaoteam.nl</a
+    >
+  </p>
+</div>
+
+<script>
+  import confetti from "canvas-confetti";
+  const button = document.getElementById("dont-click-this-secret-button");
+
+  if (button) {
+    button.addEventListener("click", () => {
+      confetti({
+        particleCount: 1e3,
+        angle: 360,
+        spread: 360,
+        origin: { x: 0 },
+      });
+      confetti({
+        particleCount: 1e3,
+        angle: 0,
+        spread: 360,
+        origin: { x: 1 },
+      });
+    });
+  }
+</script>

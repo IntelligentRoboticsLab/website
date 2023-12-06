@@ -1,0 +1,43 @@
+---
+import type { Partner } from "./types";
+import { PartnerLevels } from "./types";
+import { Image } from "@astrojs/image/components";
+
+const {
+    name,
+    url,
+    width,
+    height,
+    img_multiplier,
+    logo,
+    level,
+} = Astro.props as Partner;
+
+let imsize = 1;
+
+if (level == PartnerLevels.Platinum) {
+    imsize = 4;
+} else if (level == PartnerLevels.Gold) {
+    imsize = 3;
+} else if (level == PartnerLevels.Silver) {
+    imsize = 2;
+} else if (level == PartnerLevels.Bronze) {
+    imsize = 1.5;
+}
+
+---
+
+<a
+    href={`${url}`}
+    target="_blank"
+>
+<div>
+  <Image
+    src={logo}
+    width={imsize * img_multiplier}
+    height={height/width * imsize * img_multiplier}
+    class=`h-${imsize} w-${imsize} bg-white`
+    alt={`@${name}'s logo`}
+  />
+</div>
+<a/>

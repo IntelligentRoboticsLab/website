@@ -1,0 +1,86 @@
+---
+import worldSVG from "../../svgs/earth_line.svg"
+import codeSVG from "../../svgs/code_fill.svg"
+import handSVG from "../../svgs/hand_heart_line.svg"
+import pinSVG from "../../svgs/pin_fill.svg"
+import cupSVG from "../../svgs/teacup_line.svg"
+---
+
+<div
+  class="lg:items-begin my-16 flex flex-col items-center justify-center"
+>
+    <h1
+      class="mb-8 text-center text-5xl font-bold text-partner-text dark:text-dnt-orange-400"
+    >
+      Partnerships
+    </h1>
+    <div class = "flex flex-col items-baseline align-center w-5/6 justify-between md:flex-row">
+      <div class ="flex flex-col items-center justify-center mt-3 md:mt-0" id="connect">
+        <img
+        src={worldSVG}
+        alt="SVG of the world"
+        >
+        <p class="w-2/3 mt-5">
+          Make meaningful <span class="text-partner-text">connections</span> by becoming our partner.
+          From students to businesses, you will increase the network of your organization.
+        </p>
+      </div>
+      <div class ="flex flex-col items-center justify-center mt-3 md:mt-0" id="give">
+        <img
+        src={handSVG}
+        alt="SVG representing giving"
+        >
+        <p class="w-2/3 mt-5">
+          By becoming our partner, you <span class="text-partner-text">invest</span> in innovation, research and education.
+          Together we will achieve better <span class="text-partner-text">education</span>, work on <span class="text-partner-text">research</span> and <span class="text-partner-text">innovate</span> in the field of robotics.
+        </p>
+      </div>
+      <div class ="flex flex-col items-center justify-center mt-3 md:mt-0" id="code">
+        <img
+        src={codeSVG}
+        alt="SVG of code"
+        >
+        <p class="w-2/3 mt-5">
+          Technology is the basis of our society. In collaborating with us,
+          your organization will support new <span class="text-partner-text">technologies</span>
+          that can change our way of living.
+        </p>
+      </div>
+      <div class ="flex flex-col items-center justify-center mt-3 md:mt-0" id="pin">
+        <img
+        src={pinSVG}
+        alt="SVG of the world"
+        >
+        <p class="w-2/3 mt-5">
+          Put your organization in the <span class="text-partner-text">spotlight</span> at
+          important events. Make sure the name of your organization is known accross the sector of
+          <span class="text-partner-text">robotics</span> by collaborating with us.
+        </p>
+      </div>
+    </div>
+</div>
+
+<div
+  class="bg-white lg:items-begin flex flex-col items-center justify-center pt-10 md:px-0 px-10"
+>
+    <h1
+      class="mb-4 text-center text-5xl font-bold dark:text-dnt-orange-400"
+    >
+      Interested?
+    </h1>
+    <div class="mb-3 flex items-center">
+      <h3
+        class="text-center text-3xl dark:text-dnt-orange-400 mr-0 md:mr-3"
+      >
+        Hit us up for a cup of coffee.
+      </h3>
+      <img
+        src={cupSVG}
+        alt="SVG of a cup"
+        width="42"
+        >
+    </div><a
+      href="mailto:info@dutchnaoteam.nl"
+      class="mb-16 text-center text-xl dark:text-dnt-orange-400 text-partner-text inline-block"
+      >partnerships@dutchnaoteam.nl</a>
+</div>

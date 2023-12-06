@@ -1,0 +1,33 @@
+---
+import PartnerContainer from "./partners/partnerContainer.astro";
+import { PartnerLevels } from "./partners/types";
+import { PartnerListLevel1, PartnerListLevel2, PartnerListLevel3,  PartnerListLevel4} from "../../utils/partners";
+
+
+---
+<div
+  class="lg:items-begin my-16 items-center justify-center w-full p-10"
+>
+  <h1
+  class="mb-2 text-center text-5xl font-bold text-partner-text"
+  >
+  Our partners
+  </h1>
+  <div
+    class="lg:items-begin my-16 items-center justify-center w-full space-y-12"
+  >
+    <div>
+      <PartnerContainer partners = {PartnerListLevel1} level = {PartnerLevels.Platinum}></PartnerContainer>
+    </div>
+    <div>
+      <PartnerContainer partners = {PartnerListLevel2} level = {PartnerLevels.Gold}></PartnerContainer>
+    </div>
+    <div>
+      <PartnerContainer partners = {PartnerListLevel3} level = {PartnerLevels.Silver}></PartnerContainer>
+    </div>
+    <div>
+      <PartnerContainer partners = {PartnerListLevel4} level = {PartnerLevels.Bronze}></PartnerContainer>
+    </div>
+  </div>
+  <!-- <img src="/images/Team_Complete.webp" width="800px" alt="DNT team image" /> -->
+</div>
