@@ -13,7 +13,6 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       logo: "https://boostcrop.eu/wp-content/uploads/2019/03/universiteit-van-amsterdam-logo-png-transparent.png",
       level: PartnerLevels.Platinum
     }
-    // https://www.auf.nl/binaries/_ht_1562081236409/logolargeretina/content/gallery/channellogos/auf/auf-large-nl.svg
     ];
 
     export const PartnerListLevel2: Partner[] = [

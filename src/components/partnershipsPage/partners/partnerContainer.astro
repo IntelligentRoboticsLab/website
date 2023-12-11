@@ -10,7 +10,7 @@ export interface Props {
 
 const { partners, level } = Astro.props as Props;
 
-let levelstyleInner = "m-8";
+let levelstyleInner = "m-8 dark:bg-white";
 let levelstyleOuter = " flex-row justify-center items-center h-3/4";
 let margins = "m-10 mb-24 mt-12";
 let levelName = "Platinum";
@@ -35,9 +35,9 @@ if (level == PartnerLevels.Platinum) {
         {levelName}
       </h1>
   <div class=`flex w-full content-center ${levelstyleOuter}`>
-    <p class=`${partners.length == 0 ? " " : "hidden"} mt-8`>We don't have partners in this catogory yet. Do you want to be the first? Mail at: <a
+    <p class=`${partners.length == 0 ? " " : "hidden"} mt-8 text-center md:text-left`>We don't have partners in this catogory yet. Do you want to be the first? Mail at: <a
       href="mailto:partnerships@dutchnaoteam.nl"
-      class="text-partner-text underline hover:text-partner-text hover:decoration-wavy dark:text-white"
+      class="text-partner-text underline hover:text-partner-text text-center md:text-left hover:decoration-wavy dark:text-white"
       >partnerships@dutchnaoteam.nl</a
     ></p>
     {

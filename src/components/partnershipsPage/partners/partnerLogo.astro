@@ -11,7 +11,9 @@ const {
     img_multiplier,
     logo,
     level,
-} = Astro.props as Partner;
+    footer = false,
+} = Astro.props;
+
 
 let imsize = 1;
 
@@ -25,18 +27,22 @@ if (level == PartnerLevels.Platinum) {
     imsize = 1.5;
 }
 
+if (footer) {
+    imsize *= 0.5;
+}
+
 ---
 
 <a
     href={`${url}`}
     target="_blank"
 >
-<div>
+<div class="dark:bg-white">
   <Image
     src={logo}
     width={imsize * img_multiplier}
     height={height/width * imsize * img_multiplier}
-    class=`h-${imsize} w-${imsize} bg-white`
+    class=`h-${imsize} w-${imsize} bg-white dark:bg-white`
     alt={`@${name}'s logo`}
   />
 </div>
