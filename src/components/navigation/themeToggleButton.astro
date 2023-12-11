@@ -1,5 +1,5 @@
 <button
-  class="mx-auto flex w-fit gap-3 rounded-full border bg-dnt-orange-200/50 p-2 hover:bg-dnt-orange-200/75 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50"
+  class="flex w-fit gap-3 rounded-full border bg-dnt-orange-200/50 p-2 hover:bg-dnt-orange-200/75 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50"
   name="theme-toggle"
 >
   <label class="cursor-pointer text-dnt-orange-500 dark:text-slate-50">
@@ -33,30 +33,33 @@
 <script>
   const html = document.documentElement;
 
-  const themeToggle = document.querySelector('[name="theme-toggle"]');
+  const themeToggles = document.querySelectorAll('[name="theme-toggle"]');
 
   const getMessage = () => {
     const theme = html.classList.contains("dark") ? "light" : "dark";
     return `Use ${theme}-mode`;
   };
 
-  themeToggle!.setAttribute("title", getMessage());
-  themeToggle!.setAttribute("aria-label", getMessage());
-  themeToggle!.setAttribute(
-    "value",
-    html.classList.contains("dark") ? "dark" : "light"
-  );
-
-  const toggleTheme = (t: "light" | "dark") => {
-    localStorage.setItem("theme", t);
-    html.classList.add(t === "dark" ? "dark" : "light");
-    html.classList.remove(t === "dark" ? "light" : "dark");
+  for (let i = 0; i < themeToggles.length; i++) {
+    let themeToggle = themeToggles[i];
     themeToggle!.setAttribute("title", getMessage());
     themeToggle!.setAttribute("aria-label", getMessage());
-    themeToggle!.setAttribute("value", t);
-  };
+    themeToggle!.setAttribute(
+      "value",
+      html.classList.contains("dark") ? "dark" : "light"
+    );
 
-  themeToggle!.addEventListener("click", () => {
-    toggleTheme(html.classList.contains("dark") ? "light" : "dark");
-  });
+    const toggleTheme = (t: "light" | "dark") => {
+      localStorage.setItem("theme", t);
+      html.classList.add(t === "dark" ? "dark" : "light");
+      html.classList.remove(t === "dark" ? "light" : "dark");
+      themeToggle!.setAttribute("title", getMessage());
+      themeToggle!.setAttribute("aria-label", getMessage());
+      themeToggle!.setAttribute("value", t);
+    };
+
+    themeToggle!.addEventListener("click", () => {
+      toggleTheme(html.classList.contains("dark") ? "light" : "dark");
+    });
+  }
 </script>
