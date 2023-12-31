@@ -1,6 +1,6 @@
 ---
 import { clsx } from "clsx";
-import logoSVG from "../../utils/logo.svg?raw"
+import Logo from "./logo.astro"
 import navSVG from "../../utils/menu_fill.svg"
 import closeSVG from "../../utils/close_fill.svg"
 import { checkLanding } from "../../utils/theme";
@@ -76,13 +76,7 @@ const navbarLinks: Array<{
       </div>
       <div>
         <a href="/" class="flex" title="Home">
-          <!-- <img
-          src={logoSVG}
-          alt="logo of DNT"
-          id="logo"
-          class=""
-          > -->
-          <Fragment set:html={logoSVG} />
+          <Logo></Logo>
         </a>
       </div>
       <div class="ml-4 hidden flex-row gap-2 md:flex">
