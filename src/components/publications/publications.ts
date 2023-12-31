@@ -13,6 +13,30 @@ export const publicationsByYear = PubsByYear.parse([
         year: "2023",
         publications: [
             {
+                title: "Dutch Nao Team - Technical Report",
+                authors: [
+                    "Gijs de Jong",
+                    "Harold Ruiter",
+                    "Derck W.E. Prinzhorn",
+                    "Jakob Kaiser",
+                    "Mark Honkoop",
+                    "Joost Weerheim",
+                    "Fyor Klein Gunnewiek",
+                    "Ross Geurts",
+                    "Dario Xavier Catarrinho",
+                    "Stephan Visser",
+                    "David Werkhoven",
+                    "Rick van der Veen",
+                    "Madelon Bernardy",
+                ],
+                date: "2023-12-31",
+                year: "2023",
+                type: "techreport",
+                tags: ["Technical-Report"],
+                id: "techreport2023",
+                file: "/publications/2023/DNT_Tech_Report_2023.pdf",
+            },
+            {
                 title:
                     "Predicting a robot's position on a football field by training a machine learning algorithm on artificially generated data",
                 authors: ["Lex Bolt"],
