@@ -60,20 +60,6 @@ const navbarLinks: Array<{
 >
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
     <div class="flex w-full items-center justify-between">
-      <div id="nav-icon" class="md:hidden mr-3">
-        <img
-        src={navSVG}
-        alt="nav icon open"
-        id="nav-open"
-        class=""
-        >
-        <img
-        src={closeSVG}
-        alt="nav icon close"
-        id="nav-close"
-        class="hidden"
-        >
-      </div>
       <div>
         <a href="/" class="flex" title="Home">
           <Logo></Logo>
@@ -103,6 +89,20 @@ const navbarLinks: Array<{
         }
       </div>
       <div class="flex flex-grow"></div>
+      <div id="nav-icon" class="md:hidden">
+        <img
+        src={navSVG}
+        alt="nav icon open"
+        id="nav-open"
+        class=""
+        >
+        <img
+        src={closeSVG}
+        alt="nav icon close"
+        id="nav-close"
+        class="hidden"
+        >
+      </div>
     </div>
     <div class="flex flex-grow items-center justify-end gap-4">
       <div class="ml-4 hidden flex-grow flex-row gap-2 md:flex">
@@ -138,7 +138,7 @@ const navbarLinks: Array<{
     </div>
   </div>
 </nav>
-<div id="mobile-nav-dropdown" class="flex flex-col hidden">
+<div id="mobile-nav-dropdown" class="flex flex-col hidden items-end pr-4">
   {
     navbarLinks
       .filter((navbarLink) => (navbarLink.position === "left" || navbarLink.label === "Join us"))
