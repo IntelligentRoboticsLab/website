@@ -18,6 +18,7 @@ const imsize = 0.5;
   </h1>
   <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
   <div class="flex flex-row justify-center items-center flex-wrap ">
+    <div class="flex flex-row justify-center items-center flex-wrap dark:bg-white dark:rounded-lg dark:m-4">
     {
       partnersLists.map((partners) => (
         partners.map((partner: Partner) => (
@@ -28,6 +29,7 @@ const imsize = 0.5;
 
       ))
     }
+    </div>
   </div>
   <p class="text-center text-stone-400 dark:text-stone-500">
     Want to join the crew, become partners with us, or have any other questions? Send us
