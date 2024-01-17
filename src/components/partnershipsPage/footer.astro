@@ -1,6 +1,7 @@
 ---
 import type { Partner } from "./partners/types";
 import { Image } from "@astrojs/image/components";
+import PartnerLogo from "./partners/partnerLogo.astro";
 import { PartnerListLevel1, PartnerListLevel2, PartnerListLevel3,  PartnerListLevel4} from "../../utils/partners";
 
 let partnersLists = [PartnerListLevel1, PartnerListLevel2, PartnerListLevel3, PartnerListLevel4];
@@ -16,23 +17,19 @@ const imsize = 0.5;
     > and Dr. Pepper - Dutch Nao Team {currentYear}
   </h1>
   <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
-  <div class="flex flex-row justify-center align-center flex-wrap">
+  <div class="flex flex-row justify-center items-center flex-wrap ">
+    <div class="flex flex-row justify-center items-center flex-wrap dark:bg-white dark:rounded-lg dark:m-4">
     {
       partnersLists.map((partners) => (
         partners.map((partner: Partner) => (
-          <a href={partner.url} target="_blank">
-          <Image
-            src={partner.logo}
-            width={partner.width * imsize}
-            height={partner.height * imsize}
-            class="m-3"
-            alt={`@${partner.name}'s logo`}
-          />
-        </a>
+        <div class="dark:bg-white m-3">
+            <PartnerLogo {...partner} footer={true} />
+        </div>
         ))
 
       ))
     }
+    </div>
   </div>
   <p class="text-center text-stone-400 dark:text-stone-500">
     Want to join the crew, become partners with us, or have any other questions? Send us

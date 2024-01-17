@@ -23,28 +23,9 @@ module.exports = {
         error: "rgb(var(--color-error) / <alpha-value>)",
         success: "rgb(var(--color-success) / <alpha-value>)",
         info: "rgb(var(--color-info) / <alpha-value>)",
+        "dark-gray": "#333",
 
         "partner-text": "#EE8E2E",
-        platinum: {
-          1: "#f2f1f0",
-          2: "#E5E4E2",
-          3: "#cfcecc",
-        },
-        gold: {
-          1: "#ffea73",
-          2: "#FFD700",
-          3: "#f2ce02",
-        },
-        silver: {
-          1: "#cccccc",
-          2: "#C0C0C0",
-          3: "#b3b3b3",
-        },
-        bronze: {
-          1: "#d48433",
-          2: "#CD7F32",
-          3: "#c47a2f",
-        },
 
         "dnt-orange": {
           50: "#fef9f1",

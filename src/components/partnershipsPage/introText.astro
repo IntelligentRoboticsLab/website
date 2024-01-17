@@ -3,11 +3,11 @@ import worldSVG from "../../svgs/earth_line.svg"
 import codeSVG from "../../svgs/code_fill.svg"
 import handSVG from "../../svgs/hand_heart_line.svg"
 import pinSVG from "../../svgs/pin_fill.svg"
-import cupSVG from "../../svgs/teacup_line.svg"
+import cupSVG from "../../svgs/teacup_line.svg?raw"
 ---
 
 <div
-  class="lg:items-begin my-16 flex flex-col items-center justify-center"
+  class="lg:items-begin my-16 flex flex-col items-center justify-center text-center md:text-left"
 >
     <h1
       class="mb-8 text-center text-5xl font-bold text-partner-text dark:text-dnt-orange-400"
@@ -49,7 +49,7 @@ import cupSVG from "../../svgs/teacup_line.svg"
       <div class ="flex flex-col items-center justify-center mt-3 md:mt-0" id="pin">
         <img
         src={pinSVG}
-        alt="SVG of the world"
+        alt="SVG of a pin"
         >
         <p class="w-2/3 mt-5">
           Put your organization in the <span class="text-partner-text">spotlight</span> at
@@ -61,24 +61,20 @@ import cupSVG from "../../svgs/teacup_line.svg"
 </div>
 
 <div
-  class="bg-white lg:items-begin flex flex-col items-center justify-center pt-10 md:px-0 px-10"
+  class="bg-white dark:bg-dark-gray lg:items-begin flex flex-col items-center justify-center pt-10 md:px-0 px-10"
 >
     <h1
-      class="mb-4 text-center text-5xl font-bold dark:text-dnt-orange-400"
+      class="mb-4 text-center text-5xl font-bold dark:text-white"
     >
       Interested?
     </h1>
-    <div class="mb-3 flex items-center">
+    <div class="mb-5 md:mb-3 flex flex-col-reverse md:flex-row items-center">
       <h3
-        class="text-center text-3xl dark:text-dnt-orange-400 mr-0 md:mr-3"
+        class="text-center text-3xl dark:text-white mr-0 md:mr-3"
       >
         Hit us up for a cup of coffee.
       </h3>
-      <img
-        src={cupSVG}
-        alt="SVG of a cup"
-        width="42"
-        >
+        <Fragment set:html={cupSVG} />
     </div><a
       href="mailto:info@dutchnaoteam.nl"
       class="mb-16 text-center text-xl dark:text-dnt-orange-400 text-partner-text inline-block"
