@@ -3,8 +3,6 @@ import { clsx } from "clsx";
 import Logo from "./logo.astro"
 import navSVG from "../../utils/menu_fill.svg"
 import closeSVG from "../../utils/close_fill.svg"
-import { checkLanding } from "../../utils/theme";
-import SidebarToggle from "./sidebarToggle.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 export interface Props {
@@ -12,7 +10,6 @@ export interface Props {
 }
 
 const { pathname } = Astro.url;
-const isLanding = checkLanding(pathname) || !!Astro.props.isNotFound;
 const hasTrailing = pathname.endsWith("/");
 const currentPage = pathname.slice(0, hasTrailing ? -1 : pathname.length);
 // const langCode = getLanguageFromURL(pathname);
@@ -42,12 +39,6 @@ const navbarLinks: Array<{
     href: "/partnerships",
     position: "left",
     label: "Partnerships",
-  },
-  {
-    pattern: new RegExp("^/en"),
-    href: "/en/introduction",
-    position: "left",
-    label: "Docs",
   },
   {
     pattern: new RegExp(
@@ -137,9 +128,6 @@ const navbarLinks: Array<{
 
       <div class="hidden md:block mx-auto">
         <ThemeToggleButton />
-      </div>
-      <div class={clsx([{ hidden: isLanding }])}>
-        <SidebarToggle isLanding={isLanding} />
       </div>
     </div>
   </div>

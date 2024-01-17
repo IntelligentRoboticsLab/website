@@ -1,27 +1,14 @@
 ---
-export interface Props {
-  isLanding: boolean;
-}
+
 ---
 
 <button
   id="sidebar-toggle"
   type="button"
   aria-pressed="false"
-  class="z-20 block text-black dark:text-white md:hidden"
+  class=" w-min	py-2 block text-black dark:text-white md:hidden"
 >
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    class="h-10 w-10 fill-transparent stroke-current"
-    viewBox="0 0 24 24"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
-      d="M4 6h16M4 12h16M4 18h16"></path>
-  </svg>
-  <span class="sr-only">Toggle sidebar</span>
+  Filters
 </button>
 
 <script is:inline>
@@ -31,9 +18,22 @@ export interface Props {
     // eslint-disable-next-line -- html query selector is already defined in the themeToggleButton script
     html.classList.toggle("mobile-sidebar-toggle");
     button.toggleAttribute("aria-pressed");
+    menu.style.display = "block";
     button.innerHTML =
       button.getAttribute("aria-pressed") === null
-        ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current fill-transparent" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span class="sr-only">Close sidebar</span>`
-        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current fill-transparent" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span>`;
+        ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span class="sr-only">Close sidebar</span>`
+        : `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span>`;
   });
+
+  const button2 = document.querySelector("#sidebar-toggle-close");
+
+      button2.addEventListener("click", () => {
+        // eslint-disable-next-line -- html query selector is already defined in the themeToggleButton script
+        const menu = document.querySelector("#mobile-filter-nav");
+        menu.style.display = "none";
+        button2.innerHTML =
+          button2.getAttribute("aria-pressed") === null
+            ? `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current fill-transparent" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg><span class="sr-only">Close sidebar</span>`
+            : `<svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 stroke-current fill-transparent" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg><span class="sr-only">Toggle sidebar</span>`;
+      });
 </script>

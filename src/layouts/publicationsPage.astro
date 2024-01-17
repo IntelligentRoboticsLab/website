@@ -17,6 +17,8 @@ import PublicationCard from "../components/publications/publicationCard.astro";
 import { publicationsByYear } from "../components/publications/publications";
 import TagBrowser from "../components/publications/tagBrowser.astro";
 
+import SidebarToggle from "../components/navigation/sidebarToggle.astro";
+
 const tags = Array.from(
   new Set(
     publicationsByYear
@@ -76,6 +78,13 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         title="Site Navigation"
         class="t3-scrollbar sticky top-24 col-span-1 hidden h-auto max-h-[calc(100vh-80px)] w-full flex-col justify-start overflow-y-auto bg-default pt-4 transition-colors duration-300 md:top-32 md:flex md:max-h-[calc(100vh-96px)] md:pt-0 md:[margin-inline-start:16px]"
       >
+        <button
+          id="sidebar-toggle-close"
+          type="button"
+          class="py-2 block text-black dark:text-white md:hidden"
+        >
+          Close Filters
+        </button>
         <TagBrowser tags={tags} selectedTags={selectedTags} />
       </nav>
 
@@ -83,6 +92,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         class="col-span-1 flex min-h-full w-full flex-col px-8 pt-5"
         id="content"
       >
+        <SidebarToggle></SidebarToggle>
         {
           publicationsByYear.map((pubYear) => {
             return (
