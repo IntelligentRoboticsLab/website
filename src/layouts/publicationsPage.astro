@@ -79,9 +79,9 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         class="t3-scrollbar sticky top-24 col-span-1 hidden h-auto max-h-[calc(100vh-80px)] w-full flex-col justify-start overflow-y-auto bg-default pt-4 transition-colors duration-300 md:top-32 md:flex md:max-h-[calc(100vh-96px)] md:pt-0 md:[margin-inline-start:16px]"
       >
         <button
-          id="sidebar-toggle-close"
+          id="sidebar-toggle"
           type="button"
-          class="py-2 block text-black dark:text-white md:hidden"
+          class="flex w-fit gap-3 rounded-full border bg-dnt-orange-200/50 p-2 hover:bg-dnt-orange-200/75 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50 md:hidden"
         >
           Close Filters
         </button>
