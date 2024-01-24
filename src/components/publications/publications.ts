@@ -13,6 +13,21 @@ export const publicationsByYear = PubsByYear.parse([
         year: "2023",
         publications: [
             {
+                title: "Using Neural Factorization of Shape and Reflectance for Ball Detection",
+                authors: [
+                    "Xavier Monté",
+                    "Joey van der Kaaij",
+                    "Rogier van der Weerd",
+                    "Arnoud Visser"
+                ],
+                date: "2023-7-1",
+                year: "2023",
+                type: "misc",
+                tags: ["Reflectance estimation", "View synthesis", "Object detection"],
+                id: "xavieretal2023",
+                file: "/publications/2023/Neural_Factorization_of_Shape_and_Reflectance_of_a_Soccer_Ball_Under_an_Unknown_Illumination.pdf",
+            },
+            {
                 title: "Dutch Nao Team - Technical Report",
                 authors: [
                     "Gijs de Jong",
@@ -1155,6 +1170,21 @@ export const publicationsByYear = PubsByYear.parse([
     {
         year: "2006",
         publications: [
+            {
+                title: "Behavior-Based Vision on a 4 Legged Soccer Robot",
+                booktitle: "RoboCup 2005: Robot Soccer World Cup IX",
+                authors: ["Floris Mantz", "Pieter Jonker", "Wouter Caarls"],
+                date: "2006",
+                year: "2006",
+                publisher: "Springer Berlin Heidelberg",
+                address: "Berlin, Heidelberg",
+                pages: "480--487",
+                type: "inproceedings",
+                doi: "10.1007/11780519_44",
+                tags: ["AIBO"],
+                id: "mantzetal2006",
+                file: "/publications/2006/11780519.pdf",
+            },
             {
                 title: "An appearance-based visual compass for mobile robots",
                 authors: ["Jürgen Sturm"],
