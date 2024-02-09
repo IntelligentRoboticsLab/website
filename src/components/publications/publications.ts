@@ -10,23 +10,28 @@ const PubsByYear = z.array(
 
 export const publicationsByYear = PubsByYear.parse([
     {
-        year: "2023",
+        year: "2024",
         publications: [
             {
-                title: "Using Neural Factorization of Shape and Reflectance for Ball Detection",
+                title: "Optimising YOLOv8n using Maximum Class Separation and Data Augmentation for NAO robots",
                 authors: [
-                    "Xavier Monté",
-                    "Joey van der Kaaij",
-                    "Rogier van der Weerd",
-                    "Arnoud Visser"
+                    "Joost Weerheim",
+                    "Stephan Visser",
+                    "Kim Koomen",
+                    "Ross Geurts"
                 ],
-                date: "2023-7-1",
-                year: "2023",
+                date: "2024-2-6",
+                year: "2024",
                 type: "misc",
-                tags: ["Reflectance estimation", "View synthesis", "Object detection"],
-                id: "xavieretal2023",
-                file: "/publications/2023/Neural_Factorization_of_Shape_and_Reflectance_of_a_Soccer_Ball_Under_an_Unknown_Illumination.pdf",
+                tags: ["YOLO", "Maximum Class Separation ", "Data Augmentation", "Object detection"],
+                id: "optimizingYOLOv8n2024",
+                file: "/publications/Optimising_YOLOv8n_using_Maximum_Class_Separation_and_Data_Augmentation_for_NAO_robots.pdf",
             },
+        ],
+    },
+    {
+        year: "2023",
+        publications: [
             {
                 title: "Dutch Nao Team - Technical Report",
                 authors: [
@@ -50,6 +55,21 @@ export const publicationsByYear = PubsByYear.parse([
                 tags: ["Technical-Report"],
                 id: "techreport2023",
                 file: "/publications/2023/DNT_Tech_Report_2023.pdf",
+            },
+            {
+                title: "Using Neural Factorization of Shape and Reflectance for Ball Detection",
+                authors: [
+                    "Xavier Monté",
+                    "Joey van der Kaaij",
+                    "Rogier van der Weerd",
+                    "Arnoud Visser"
+                ],
+                date: "2023-7-1",
+                year: "2023",
+                type: "misc",
+                tags: ["Reflectance estimation", "View synthesis", "Object detection"],
+                id: "xavieretal2023",
+                file: "/publications/2023/Neural_Factorization_of_Shape_and_Reflectance_of_a_Soccer_Ball_Under_an_Unknown_Illumination.pdf",
             },
             {
                 title:
