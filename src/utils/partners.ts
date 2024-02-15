@@ -8,9 +8,9 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       description: "",
       url: "https://www.uva.nl/",
       width: 120,
-      height: 35,
+      height: 60,
       img_multiplier: 100,
-      logo: "https://boostcrop.eu/wp-content/uploads/2019/03/universiteit-van-amsterdam-logo-png-transparent.png",
+      logo: "/images/uva.png",
       level: PartnerLevels.Platinum
     }
     ];
@@ -26,7 +26,7 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       width: 120,
       height: 10,
       img_multiplier: 200,
-      logo: "https://www.auf.nl/binaries/_ht_1562081236409/logolargeretina/content/gallery/channellogos/auf/auf-large-nl.svg",
+      logo: "/images/universiteitsfonds.png",
       level: PartnerLevels.Silver
     }
     ];
@@ -39,7 +39,17 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       width: 120,
       height: 20,
       img_multiplier: 100,
-      logo: "https://static.wixstatic.com/media/4f8123_1d56194d420648ec907078f5fc83ade1~mv2.png/v1/crop/x_0,y_54,w_4420,h_772/fill/w_336,h_58,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/Logo%20blue.png",
+      logo: "/images/zetaalpha.png",
+      level: PartnerLevels.Bronze
+    },
+    {
+      name: "Startup Village",
+      description: "",
+      url: "https://www.startupvillage.nl/",
+      width: 1394,
+      height: 707,
+      img_multiplier: 70,
+      logo: "/images/startupvillage.png",
       level: PartnerLevels.Bronze
     }
     ];
