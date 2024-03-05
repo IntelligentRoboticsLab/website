@@ -4,6 +4,10 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      screens: {
+        'custom-xl': '1150px',
+      },
+
       keyframes: {
         checkmark: {
           "0%": { "stroke-dashoffset": -30 },
