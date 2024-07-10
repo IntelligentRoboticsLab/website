@@ -49,7 +49,7 @@ export const publicationsByYear = PubsByYear.parse([
                 date: "2024-2-13",
                 year: "2024",
                 type: "techreport",
-                tags: ["Techincal-Report"],
+                tags: ["Techincal-Report", "Description"],
                 id: "team_description_paper_2024",
                 file: "/publications/2024/Qualification_Document_2024.pdf",
             },
