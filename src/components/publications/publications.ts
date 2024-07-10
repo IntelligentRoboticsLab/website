@@ -25,11 +25,6 @@ export const publicationsByYear = PubsByYear.parse([
                 id: "position-and-altitude-from-two-points-2024",
                 file: "/publications/2024/position-and-altitude-from-two-points.pdf",
             },
-        ],
-    },
-    {
-        year: "2024",
-        publications: [
             {
                 title: "Introducing object detection to EKF SLAM on a Nao-robot football field",
                 authors: [
@@ -41,6 +36,22 @@ export const publicationsByYear = PubsByYear.parse([
                 tags: ["Object detection"],
                 id: "introducing-object-detection-to-ekf-slam-2024",
                 file: "/publications/2024/introducing-object-detection-to-ekf-slam.pdf",
+            },
+            {
+                title: "Team Description Paper Dutch Nao Team 2024",
+                authors: [
+                    "Jakob Kaiser",
+                    "Ross Geurts",
+                    "Harold Ruiter",
+                    "Gijs de Jong",
+                    "Marina Orozco Gonzalez",
+                ],
+                date: "2024-2-13",
+                year: "2024",
+                type: "techreport",
+                tags: ["Techincal-Report"],
+                id: "team_description_paper_2024",
+                file: "/publications/Qualification_Document_2024.pdf",
             },
         ],
     },
