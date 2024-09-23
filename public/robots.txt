@@ -5,3 +5,8 @@ Sitemap: https://dutchnaoteam.nl/sitemap-index.xml
 User-Agent: FacebookBot     # rules targeted at FacebookBot
 Disallow:   /publications   # disallow publications page
 Crawl-delay: 30             # 1 page per 30 seconds
+
+# disable ai scraper bot on publications
+User-agent: Meta-ExternalAgent
+Disallow: /publications
+Crawl-delay: 120
