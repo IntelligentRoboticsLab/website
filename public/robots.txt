@@ -6,7 +6,28 @@ User-Agent: FacebookBot     # rules targeted at FacebookBot
 Disallow:   /publications   # disallow publications page
 Crawl-delay: 30             # 1 page per 30 seconds
 
-# disable ai scraper bot on publications
+# block ai scraper bot on publications
 User-agent: Meta-ExternalAgent
 Disallow: /publications
 Crawl-delay: 120
+
+# block gpt scraper bot
+User-agent: GPTBot
+Disallow: /publications
+Crawl-delay: 120
+
+# block chat gpt scraper bot
+User-agent: ChatGPT-User
+Disallow: /publications
+Crawl-delay: 120
+
+# block oai search scraper bot
+User-agent: OAI-SearchBot
+Disallow: /publications
+Crawl-delay: 120
+
+# block claude scraping bot
+User-agent: ClaudeBot
+Disallow: /publications
+Crawl-delay: 120
+
