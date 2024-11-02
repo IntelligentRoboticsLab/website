@@ -13,6 +13,41 @@ export const publicationsByYear = PubsByYear.parse([
         year: "2024",
         publications: [
             {
+                title: "Position and Altitude of the Nao Camera Head from Two Points on the Soccer Field plus the Gravitational Direct",
+                authors: [
+                    "Stijn Oomes",
+                    "Arnoud Visser"
+                ],
+                date: "2024-7-3",
+                year: "2024",
+                type: "misc",
+                tags: ["Localization"],
+                id: "position-and-altitude-from-two-points-2024",
+                file: "/publications/2024/position-and-altitude-from-two-points.pdf",
+            },
+        ],
+    },
+    {
+        year: "2024",
+        publications: [
+            {
+                title: "Introducing object detection to EKF SLAM on a Nao-robot football field",
+                authors: [
+                    "Madelon Bernardy"
+                ],
+                date: "2024-6-24",
+                year: "2024",
+                type: "misc",
+                tags: ["Object detection"],
+                id: "introducing-object-detection-to-ekf-slam-2024",
+                file: "/publications/2024/introducing-object-detection-to-ekf-slam.pdf",
+            },
+        ],
+    },
+    {
+        year: "2024",
+        publications: [
+            {
                 title: "Optimising YOLOv8n using Maximum Class Separation and Data Augmentation for NAO robots",
                 authors: [
                     "Joost Weerheim",
