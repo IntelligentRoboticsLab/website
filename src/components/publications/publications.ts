@@ -53,11 +53,6 @@ export const publicationsByYear = PubsByYear.parse([
                 id: "team_description_paper_2024",
                 file: "/publications/2024/Qualification_Document_2024.pdf",
             },
-        ],
-    },
-    {
-        year: "2024",
-        publications: [
             {
                 title: "Optimising YOLOv8n using Maximum Class Separation and Data Augmentation for NAO robots",
                 authors: [
