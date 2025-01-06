@@ -1,0 +1,13 @@
+---
+import { roleList } from "../../utils/roles";
+// import type { Roles } from "./roles/types";
+import RoleCard from "./roles/roleCard.astro";
+
+---
+<div class="w-full flex md:flex-row flex-col items-center align-center items-start justify-center">
+    {
+        roleList.map((role) => (
+        <RoleCard {role} />
+        ))
+      }
+</div>
