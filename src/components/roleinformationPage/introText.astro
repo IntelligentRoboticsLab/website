@@ -15,7 +15,7 @@ import RoleCarousel from "./roleCarousel.astro";
     >
       Join our team!
     </h1>
-    <div class = "flex flex-col items-baseline align-center items-center text-center justify-between md:flex-row">
+    <div class = "flex p-3 flex-col items-baseline align-center items-center text-center justify-between md:flex-row">
         Interested in joining? Below are some roles that we are looking for right now!<br>Looking for something else? Contact us and together we can find out what suits you best.
     </div>
 </div>
@@ -38,8 +38,11 @@ import RoleCarousel from "./roleCarousel.astro";
       src={codeSVG}
       alt="SVG of code"
       >
-    </div><a
-      href="https://join.dutchnao.team/"
-      class="mb-16 text-center text-xl dark:text-dnt-orange-400 text-partner-text inline-block"
-      >By filling in this form.</a>
+    </div>
+    <a
+        class="rounded-full border mb-16 bg-dnt-orange-200/50 px-4 py-2 text-dnt-orange-800 hover:bg-dnt-orange-200/75 hover:no-underline dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:text-dnt-orange-100 dark:hover:border-dnt-orange-200/50"
+        href="https://join.dutchnao.team/"
+        >
+        By pressing this button!
+        </a>
 </div>

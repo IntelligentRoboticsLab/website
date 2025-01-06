@@ -16,7 +16,16 @@ const { role } = Astro.props as Props;
 <div class="flex-none w-4/5 md:w-2/5 flex flex-col p-4 m-4 border-2 border-partner-text rounded-md">
     <h2 class="text-3xl font-bold text-partner-text">{role.name}</h2>
     <hr>
-    <p class="">{role.description}</p>
+    <p class="pt-2">{role.description}</p>
+    <div class="flex align-center items-center text-center">
+        {
+            role.tags.map((tag) => (
+              <div class="bg-partner-text rounded-lg mx-1 my-1">
+                <p class="px-2 text-white">{tag}</p>
+              </div>
+            ))
+          }
+    </div>
 </div>
 <!-- <div class=`${margins}`>
     <h1
