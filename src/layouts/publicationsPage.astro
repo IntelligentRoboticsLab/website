@@ -81,7 +81,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         <button
           id="sidebar-toggle"
           type="button"
-          class="flex w-fit mx-4 gap-3 rounded-full border bg-dnt-orange-200/50 p-2 hover:bg-dnt-orange-200/75 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50 md:hidden"
+          class="mx-4 flex w-fit gap-3 rounded-full border bg-dnt-orange-200/50 p-2 hover:bg-dnt-orange-200/75 dark:border-dnt-orange-200/20 dark:bg-dnt-orange-200/10 dark:hover:border-dnt-orange-200/50 md:hidden"
         >
           Close Filters
         </button>
@@ -92,7 +92,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         class="col-span-1 flex min-h-full w-full flex-col px-8 pt-5"
         id="content"
       >
-        <SidebarToggle></SidebarToggle>
+        <SidebarToggle />
         {
           publicationsByYear.map((pubYear) => {
             return (
