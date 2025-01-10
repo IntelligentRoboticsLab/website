@@ -29,18 +29,22 @@ if (level == PartnerLevels.Platinum) {
 ---
 
 <div class=`${margins}`>
-  <h1
-        class="mb-2 text-center text-3xl font-bold text-partner-text"
-      >
-        {levelName}
-      </h1>
+  <h1 class="mb-2 text-center text-3xl font-bold text-partner-text">
+    {levelName}
+  </h1>
   <div class=`flex w-full content-center ${levelstyleOuter}`>
-    <p class=`${partners.length == 0 ? " " : "hidden"} mt-8 text-center md:text-left`>We don't have partners in this catogory yet. Do you want to be the first? Mail at: <a
-      href="mailto:partnerships@dutchnaoteam.nl"
-      class="text-partner-text underline hover:text-partner-text text-center md:text-left hover:decoration-wavy dark:text-white"
-      >partnerships@dutchnaoteam.nl</a
-    ></p>
-    <div class= `${partners.length == 0 ? "hidden" : " "} dark:bg-white dark:w-full dark:rounded-lg dark:md:w-1/2 content-center  justify-center flex`>
+    <p
+      class=`${partners.length == 0 ? " " : "hidden"} mt-8 text-center md:text-left`
+    >
+      We don't have partners in this catogory yet. Do you want to be the first?
+      Mail at: <a
+        href="mailto:partnerships@dutchnaoteam.nl"
+        class="text-center text-partner-text underline hover:text-partner-text hover:decoration-wavy dark:text-white md:text-left"
+        >partnerships@dutchnaoteam.nl</a>
+    </p>
+    <div
+      class=`${partners.length == 0 ? "hidden" : " "} dark:bg-white dark:w-full dark:rounded-lg dark:md:w-1/2 content-center  justify-center flex`
+    >
       {
         partners.map((partner) => (
           <div class={levelstyleInner}>

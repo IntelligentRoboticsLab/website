@@ -4,46 +4,42 @@ import { PartnerLevels } from "./types";
 import { Image } from "@astrojs/image/components";
 
 const {
-    name,
-    url,
-    width,
-    height,
-    img_multiplier,
-    logo,
-    level,
-    footer = false,
+  name,
+  url,
+  width,
+  height,
+  img_multiplier,
+  logo,
+  level,
+  footer = false,
 } = Astro.props;
-
 
 let imsize = 1;
 
 if (level == PartnerLevels.Platinum) {
-    imsize = 4;
+  imsize = 4;
 } else if (level == PartnerLevels.Gold) {
-    imsize = 3;
+  imsize = 3;
 } else if (level == PartnerLevels.Silver) {
-    imsize = 2;
+  imsize = 2;
 } else if (level == PartnerLevels.Bronze) {
-    imsize = 1.5;
+  imsize = 1.5;
 }
 
 if (footer) {
-    imsize = 1.5;
+  imsize = 1.5;
 }
-
 ---
 
-<a
-    href={`${url}`}
-    target="_blank"
+<a href={`${url}`} target="_blank">
+  <div class="dark:bg-white">
+    <Image
+      src={logo}
+      width={imsize * img_multiplier}
+      height={(height / width) * imsize * img_multiplier}
+      class=`h-${imsize} w-${imsize} bg-white dark:bg-white`
+      alt={`@${name}'s logo`}
+    />
+  </div>
+  <a></a></a
 >
-<div class="dark:bg-white">
-  <Image
-    src={logo}
-    width={imsize * img_multiplier}
-    height={height/width * imsize * img_multiplier}
-    class=`h-${imsize} w-${imsize} bg-white dark:bg-white`
-    alt={`@${name}'s logo`}
-  />
-</div>
-<a/>

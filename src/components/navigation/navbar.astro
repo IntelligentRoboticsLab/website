@@ -1,6 +1,6 @@
 ---
 import { clsx } from "clsx";
-import Logo from "./logo.astro"
+import Logo from "./logo.astro";
 import ThemeToggleButton from "./themeToggleButton.astro";
 
 export interface Props {
@@ -50,14 +50,14 @@ const navbarLinks: Array<{
 ---
 
 <nav
-  class= "navbar flex flex-col relative justify-between items-center py-1 transition-colors duration-300"
+  class="navbar relative flex flex-col items-center justify-between py-1 transition-colors duration-300"
   aria-label="Global"
 >
   <div class="flex w-full max-w-7xl items-center justify-between px-4">
     <div class="flex w-full items-center justify-between">
       <div>
         <a href="/" class="flex" title="Home">
-          <Logo></Logo>
+          <Logo />
         </a>
       </div>
       <div class="ml-4 hidden flex-row gap-2 md:flex">
@@ -86,32 +86,33 @@ const navbarLinks: Array<{
       <div class="flex flex-grow"></div>
       <div id="nav-icon" class="md:hidden">
         <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-10 w-10 fill-transparent stroke-current"
-        viewBox="0 0 24 24"
-        id="nav-open"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-10 w-10 fill-transparent stroke-current"
+          viewBox="0 0 24 24"
+          id="nav-open"
         >
           <path
             stroke-linecap="round"
             stroke-linejoin="round"
             stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16">
+            d="M4 6h16M4 12h16M4 18h16"
+          >
           </path>
         </svg>
         <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-10 w-10 fill-transparent stroke-current hidden"
-        viewBox="0 0 24 24"
-        width="24"
-        height="24"
-        stroke="black"
-        stroke-width="2.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        id="nav-close"
+          xmlns="http://www.w3.org/2000/svg"
+          class="hidden h-10 w-10 fill-transparent stroke-current"
+          viewBox="0 0 24 24"
+          width="24"
+          height="24"
+          stroke="black"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          id="nav-close"
         >
-          <line x1="4" y1="4" x2="20" y2="20" />
-          <line x1="20" y1="4" x2="4" y2="20" />
+          <line x1="4" y1="4" x2="20" y2="20"></line>
+          <line x1="20" y1="4" x2="4" y2="20"></line>
         </svg>
         <!-- <img
         src={closeSVG}
@@ -146,16 +147,19 @@ const navbarLinks: Array<{
         }
       </div>
 
-      <div class="hidden md:block mx-auto">
+      <div class="mx-auto hidden md:block">
         <ThemeToggleButton />
       </div>
     </div>
   </div>
 </nav>
-<div id="mobile-nav-dropdown" class="flex flex-col hidden items-end pr-4">
+<div id="mobile-nav-dropdown" class="flex hidden flex-col items-end pr-4">
   {
     navbarLinks
-      .filter((navbarLink) => (navbarLink.position === "left" || navbarLink.label === "Join us"))
+      .filter(
+        (navbarLink) =>
+          navbarLink.position === "left" || navbarLink.label === "Join us"
+      )
       .map((navbarLink) => (
         <a
           class={clsx(
@@ -165,9 +169,7 @@ const navbarLinks: Array<{
                 navbarLink.pattern.exec(currentPage),
             }
           )}
-          aria-current={
-            navbarLink.href === currentPage ? "page" : "false"
-          }
+          aria-current={navbarLink.href === currentPage ? "page" : "false"}
           href={navbarLink.href}
         >
           {navbarLink.label}
@@ -175,7 +177,7 @@ const navbarLinks: Array<{
       ))
   }
   <div class="px-4 py-2">
-    <ThemeToggleButton/>
+    <ThemeToggleButton />
   </div>
 </div>
 
@@ -187,14 +189,14 @@ const navbarLinks: Array<{
   let hidden = true;
   if (navIcon) {
     navIcon.addEventListener("click", () => {
-    hidden = !hidden;
-    if (navContent) {
-      navContent.style.display = hidden ? "none" : "flex";
-      if (navOpen && navClose) {
-        navOpen.style.display = hidden ? "block" : "none";
-        navClose.style.display = hidden ? "none" : "block";
+      hidden = !hidden;
+      if (navContent) {
+        navContent.style.display = hidden ? "none" : "flex";
+        if (navOpen && navClose) {
+          navOpen.style.display = hidden ? "block" : "none";
+          navClose.style.display = hidden ? "none" : "block";
+        }
       }
-    }
-  });
+    });
   }
 </script>

@@ -2,38 +2,49 @@
 import type { Partner } from "./partners/types";
 import { Image } from "@astrojs/image/components";
 import PartnerLogo from "./partners/partnerLogo.astro";
-import { PartnerListLevel1, PartnerListLevel2, PartnerListLevel3,  PartnerListLevel4} from "../../utils/partners";
+import {
+  PartnerListLevel1,
+  PartnerListLevel2,
+  PartnerListLevel3,
+  PartnerListLevel4,
+} from "../../utils/partners";
 
-let partnersLists = [PartnerListLevel1, PartnerListLevel2, PartnerListLevel3, PartnerListLevel4];
+let partnersLists = [
+  PartnerListLevel1,
+  PartnerListLevel2,
+  PartnerListLevel3,
+  PartnerListLevel4,
+];
 const currentYear = new Date().getFullYear();
 const imsize = 0.5;
 ---
 
-<div class="flex flex-col justify-center align-center px-8 py-8">
-  <h1 class="text-stone-400 dark:text-stone-500 text-center">
+<div class="align-center flex flex-col justify-center px-8 py-8">
+  <h1 class="text-center text-stone-400 dark:text-stone-500">
     Made with love, robots <span
       class="hover:cursor-pointer"
       id="dont-click-this-secret-button">🤖</span
     > and Dr. Pepper - Dutch Nao Team {currentYear}
   </h1>
-  <p class="text-stone-400 dark:text-stone-500 text-center">Supported by:</p>
-  <div class="flex flex-row justify-center items-center flex-wrap ">
-    <div class="flex flex-row justify-center items-center flex-wrap dark:bg-white dark:rounded-lg dark:m-4">
-    {
-      partnersLists.map((partners) => (
-        partners.map((partner: Partner) => (
-        <div class="dark:bg-white m-3">
-            <PartnerLogo {...partner} footer={true} />
-        </div>
-        ))
-
-      ))
-    }
+  <p class="text-center text-stone-400 dark:text-stone-500">Supported by:</p>
+  <div class="flex flex-row flex-wrap items-center justify-center">
+    <div
+      class="flex flex-row flex-wrap items-center justify-center dark:m-4 dark:rounded-lg dark:bg-white"
+    >
+      {
+        partnersLists.map((partners) =>
+          partners.map((partner: Partner) => (
+            <div class="m-3 dark:bg-white">
+              <PartnerLogo {...partner} footer={true} />
+            </div>
+          ))
+        )
+      }
     </div>
   </div>
   <p class="text-center text-stone-400 dark:text-stone-500">
-    Want to join the crew, become partners with us, or have any other questions? Send us
-    an email at <a
+    Want to join the crew, become partners with us, or have any other questions?
+    Send us an email at <a
       href="mailto:info@dutchnaoteam.nl"
       class="text-black underline hover:text-dnt-orange-400 hover:decoration-wavy dark:text-white"
       >info@dutchnaoteam.nl</a
