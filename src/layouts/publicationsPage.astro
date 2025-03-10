@@ -1,6 +1,4 @@
 ---
-import clsx from "clsx";
-
 import HeadCommon from "../components/headCommon.astro";
 import Navbar from "../components/navigation/navbar.astro";
 import "../styles/accessibility.css";
@@ -12,24 +10,17 @@ import JumpToContent from "../components/accessibility/jumpToContent.astro";
 import * as CONFIG from "../config";
 
 import HeadSeo from "../components/headSeo.astro";
-import type { IPublication } from "../components/publications/publication.js";
-import PublicationCard from "../components/publications/publicationCard.astro";
 import { publicationsByYear } from "../components/publications/publications";
-import TagBrowser from "../components/publications/tagBrowser.astro";
-
 import SidebarToggle from "../components/navigation/sidebarToggle.astro";
 
-const tags = Array.from(
+// Extract all tags for client-side filtering
+const allTags = Array.from(
   new Set(
     publicationsByYear
       .map((pubYear) => pubYear.publications.map((pub) => pub.tags).flat())
       .flat()
   )
 ).sort((a, b) => (a > b ? 1 : -1));
-
-const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
-  .split(" ")
-  .filter((tag) => tag !== "");
 ---
 
 <html dir={"ltr"} lang={"en-us"} class="initial">
@@ -77,6 +68,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         id="grid-left"
         title="Site Navigation"
         class="t3-scrollbar sticky top-24 col-span-1 hidden h-auto max-h-[calc(100vh-80px)] w-full flex-col justify-start overflow-y-auto bg-default pt-4 transition-colors duration-300 md:top-32 md:flex md:max-h-[calc(100vh-96px)] md:pt-0 md:[margin-inline-start:16px]"
+        style="position: sticky; align-self: start;"
       >
         <button
           id="sidebar-toggle"
@@ -85,7 +77,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         >
           Close Filters
         </button>
-        <TagBrowser tags={tags} selectedTags={selectedTags} />
+        <div id="tag-browser-container"></div>
       </nav>
 
       <div
@@ -93,54 +85,7 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         id="content"
       >
         <SidebarToggle />
-        {
-          publicationsByYear.map((pubYear) => {
-            return (
-              <div class="fit-content">
-                {
-                  <h1
-                    class={clsx(
-                      "mb-2 text-3xl font-semibold text-dnt-orange-900 dark:text-dnt-orange-50",
-                      {
-                        hidden:
-                          pubYear.publications.filter((pub) => {
-                            return (
-                              selectedTags.length == 0 ||
-                              pub.tags.some((tag) => selectedTags.includes(tag))
-                            );
-                          }).length == 0,
-                      }
-                    )}
-                  >
-                    {pubYear.year}
-                  </h1>
-                }
-                <div class="flex flex-row">
-                  <div class="mr-4" />
-                  <div class="flex flex-col">
-                    {pubYear.publications
-                      ?.filter((pub) => {
-                        return (
-                          selectedTags.length == 0 ||
-                          pub.tags.some((tag) => selectedTags.includes(tag))
-                        );
-                      })
-                      .map((pub) => {
-                        return (
-                          <div class="mb-4">
-                            <PublicationCard
-                              year={pubYear.year}
-                              publication={pub as IPublication}
-                            />
-                          </div>
-                        );
-                      })}
-                  </div>
-                </div>
-              </div>
-            );
-          })
-        }
+        <div id="publications-container" class="min-h-[80vh]"></div>
         <div class="py-32"></div>
       </div>
       <div class="md:[margin-inline-end:16px]">
@@ -153,5 +98,290 @@ const selectedTags = (Astro.url.searchParams.get("tags") ?? "")
         </aside>
       </div>
     </main>
+
+    <script>
+      import { publicationsByYear } from "../components/publications/publications";
+      import type { IPublication } from "../components/publications/publication";
+      import { toBibtex } from "../components/publications/publication";
+      
+      // Store all publications data
+      const allPublicationsByYear = publicationsByYear;
+      
+      // Extract all tags
+      const allTags = Array.from(
+        new Set(
+          allPublicationsByYear
+            .map((pubYear) => pubYear.publications.map((pub) => pub.tags).flat())
+            .flat()
+        )
+      ).sort((a, b) => (a > b ? 1 : -1));
+
+      // Track selected tags
+      let selectedTags = [];
+
+      // Function to toggle a tag selection
+      function toggleTag(tag) {
+        const index = selectedTags.indexOf(tag);
+        if (index !== -1) {
+          selectedTags.splice(index, 1);
+        } else {
+          selectedTags.push(tag);
+        }
+        renderPublications();
+        renderTagBrowser();
+      }
+
+      // Function to render the tag browser
+      function renderTagBrowser() {
+        const container = document.getElementById('tag-browser-container');
+        if (!container) return;
+
+        let html = `
+          <div dir="ltr" class="t3-scrollbar h-full w-full bg-default transition-colors duration-300 lg:mb-12">
+            <ul dir="ltr" class="px-4 pb-28 text-slate-900 dark:text-dnt-orange-50 md:pb-0">
+              <li>
+                <div>
+                  <h2 class="pb-2 text-xl font-semibold transition-colors duration-300 sm:text-lg">
+                    Filter tags:
+                  </h2>
+                  <ul class="mb-2">
+        `;
+
+        allTags.forEach(tag => {
+          const isActive = selectedTags.includes(tag);
+          html += `
+            <li>
+              <a 
+                href="#" 
+                data-tag="${tag}"
+                class="${isActive 
+                  ? 'border-dnt-orange-300 bg-dnt-orange-300/30 font-medium dark:bg-dnt-orange-300/20' 
+                  : 'border-dnt-orange-300/20'} 
+                  text-md block rounded-r-lg py-2 text-dnt-orange-800 transition-colors [padding-inline-start:16px] 
+                  hover:border-dnt-orange-300/50 hover:bg-dnt-orange-300/20 hover:text-dnt-orange-400 
+                  dark:text-dnt-orange-200 dark:hover:bg-dnt-orange-300/10 dark:hover:text-dnt-orange-100 border-l-2"
+              >
+                <span>${tag}</span>
+              </a>
+            </li>
+          `;
+        });
+
+        html += `
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        `;
+
+        container.innerHTML = html;
+
+        // Add event listeners to tag links
+        const tagLinks = container.querySelectorAll('a[data-tag]');
+        tagLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const tag = link.getAttribute('data-tag');
+            toggleTag(tag);
+          });
+        });
+      }
+
+      // Function to render the BibTeX button
+      function renderBibButton(publication, container) {
+        const bibtex = toBibtex(publication);
+        
+        const buttonContainer = document.createElement('div');
+        buttonContainer.className = 'flex w-auto';
+        
+        const button = document.createElement('button');
+        button.className = 'flex w-auto flex-row gap-2 rounded-lg bg-dnt-orange-200 px-2 py-1 hover:cursor-pointer hover:bg-dnt-orange-200/50 dark:bg-dnt-orange-800/50 hover:dark:bg-dnt-orange-700/50';
+        button.textContent = 'BibTeX';
+        
+        // Copy icon
+        const copyIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        copyIcon.setAttribute('width', '24');
+        copyIcon.setAttribute('height', '24');
+        copyIcon.setAttribute('viewBox', '0 0 24 24');
+        copyIcon.setAttribute('fill', 'none');
+        copyIcon.setAttribute('stroke', 'currentColor');
+        copyIcon.setAttribute('stroke-width', '2');
+        copyIcon.setAttribute('stroke-linecap', 'round');
+        copyIcon.setAttribute('stroke-linejoin', 'round');
+        copyIcon.classList.add('copy-icon');
+        
+        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        rect.setAttribute('x', '9');
+        rect.setAttribute('y', '9');
+        rect.setAttribute('width', '13');
+        rect.setAttribute('height', '13');
+        rect.setAttribute('rx', '2');
+        rect.setAttribute('ry', '2');
+        
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1');
+        
+        copyIcon.appendChild(rect);
+        copyIcon.appendChild(path);
+        
+        // Check icon (hidden by default)
+        const checkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        checkIcon.setAttribute('width', '24');
+        checkIcon.setAttribute('height', '24');
+        checkIcon.setAttribute('viewBox', '0 0 24 24');
+        checkIcon.setAttribute('fill', 'none');
+        checkIcon.setAttribute('stroke', 'currentColor');
+        checkIcon.setAttribute('stroke-width', '2');
+        checkIcon.setAttribute('stroke-linecap', 'round');
+        checkIcon.setAttribute('stroke-linejoin', 'round');
+        checkIcon.classList.add('check-icon', 'hidden');
+        
+        const polyline = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+        polyline.setAttribute('points', '20 6 9 17 4 12');
+        polyline.classList.add('animate-checkmark');
+        polyline.setAttribute('stroke-dasharray', '450');
+        polyline.setAttribute('stroke-dashoffset', '30');
+        
+        checkIcon.appendChild(polyline);
+        
+        button.appendChild(copyIcon);
+        button.appendChild(checkIcon);
+        buttonContainer.appendChild(button);
+        
+        // Add click event to copy bibtex
+        button.addEventListener('click', () => {
+          navigator.clipboard.writeText(bibtex);
+          
+          // Show check icon, hide copy icon
+          copyIcon.classList.add('hidden');
+          checkIcon.classList.remove('hidden');
+          
+          // Reset after 1 second
+          setTimeout(() => {
+            copyIcon.classList.remove('hidden');
+            checkIcon.classList.add('hidden');
+          }, 1000);
+        });
+        
+        container.appendChild(buttonContainer);
+      }
+
+      // Function to render publication cards
+      function renderPublicationCard(publication, yearValue) {
+        const cardContainer = document.createElement('div');
+        cardContainer.className = 'mb-4';
+        
+        const cardContent = document.createElement('div');
+        cardContent.className = 'text-dnt-orange-500 dark:text-dnt-orange-300';
+        
+        const contentCol = document.createElement('div');
+        contentCol.className = 'flex flex-col';
+        
+        // Title with link
+        const titleLink = document.createElement('a');
+        titleLink.href = publication.file;
+        titleLink.className = 'text-xl font-semibold hover:text-dnt-orange-700 hover:decoration-dotted dark:hover:text-dnt-orange-400';
+        titleLink.textContent = publication.title;
+        contentCol.appendChild(titleLink);
+        
+        // Authors
+        const authors = document.createElement('p');
+        authors.className = 'text-s mb-3 text-dnt-orange-700 dark:text-dnt-orange-200';
+        authors.textContent = publication.authors.join(', ');
+        contentCol.appendChild(authors);
+        
+        // Tags
+        const tags = document.createElement('p');
+        tags.className = 'text-md text-dnt-orange-900 dark:text-dnt-orange-100';
+        tags.textContent = 'Tags: ' + publication.tags.join(', ');
+        contentCol.appendChild(tags);
+        
+        // Spacing
+        const spacing = document.createElement('div');
+        spacing.className = 'py-1';
+        contentCol.appendChild(spacing);
+        
+        // BibTeX button
+        renderBibButton(publication, contentCol);
+        
+        cardContent.appendChild(contentCol);
+        cardContainer.appendChild(cardContent);
+        
+        return cardContainer;
+      }
+      
+      // Function to render publications
+      function renderPublications() {
+        const container = document.getElementById('publications-container');
+        if (!container) return;
+        
+        container.innerHTML = '';
+        
+        allPublicationsByYear.forEach(pubYear => {
+          // Filter publications based on selected tags - must contain ALL selected tags
+          const filteredPublications = pubYear.publications.filter(pub => {
+            return (
+              selectedTags.length === 0 ||
+              selectedTags.every(selectedTag => pub.tags.includes(selectedTag))
+            );
+          });
+          
+          // Skip this year if no publications match the filters
+          if (filteredPublications.length === 0) return;
+          
+          // Create year header
+          const yearSection = document.createElement('div');
+          yearSection.className = 'fit-content';
+          
+          const yearHeader = document.createElement('h1');
+          yearHeader.className = 'mb-2 text-3xl font-semibold text-dnt-orange-900 dark:text-dnt-orange-50';
+          yearHeader.textContent = pubYear.year;
+          yearSection.appendChild(yearHeader);
+          
+          // Create publications container
+          const pubsContainer = document.createElement('div');
+          pubsContainer.className = 'flex flex-row';
+          
+          const margin = document.createElement('div');
+          margin.className = 'mr-4';
+          pubsContainer.appendChild(margin);
+          
+          const pubsList = document.createElement('div');
+          pubsList.className = 'flex flex-col';
+          
+          // Add each publication
+          filteredPublications.forEach(pub => {
+            const card = renderPublicationCard(pub, pubYear.year);
+            pubsList.appendChild(card);
+          });
+          
+          pubsContainer.appendChild(pubsList);
+          yearSection.appendChild(pubsContainer);
+          container.appendChild(yearSection);
+        });
+      }
+      
+      // Initialize the page
+      document.addEventListener('DOMContentLoaded', () => {
+        renderTagBrowser();
+        renderPublications();
+        
+        // Handle mobile sidebar toggle
+        const mainSidebarToggle = document.querySelectorAll('#sidebar-toggle');
+        mainSidebarToggle.forEach((button) => {
+          button.addEventListener('click', () => {
+            const gridLeft = document.getElementById('grid-left');
+            if (gridLeft) {
+              if (gridLeft.classList.contains('hidden')) {
+                gridLeft.classList.remove('hidden');
+              } else {
+                gridLeft.classList.add('hidden');
+              }
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
