@@ -10,6 +10,23 @@ const PubsByYear = z.array(
 
 export const publicationsByYear = PubsByYear.parse([
   {
+    year: "2025",
+    publications: [
+      {
+        title: "Distillation Techniques for Network Reconstruction in Adaptive Systems",
+        authors: [
+          "Joost Weerheim",
+        ],
+        date: "2025-6-27",
+        year: "2025",
+        type: "misc",
+        tags: ["Computer Vision", "BSc"],
+        id: "network-reconstruction-in-adaptive-systems-2025",
+        file: "/publications/2025/Weerheim2025.pdf",
+      },
+    ],
+  },
+  {
     year: "2024",
     publications: [
       {
