@@ -20,7 +20,7 @@ export const publicationsByYear = PubsByYear.parse([
         date: "2025-6-27",
         year: "2025",
         type: "misc",
-        tags: ["Computer Vision"],
+        tags: ["Computer Vision", "BSc"],
         id: "network-reconstruction-in-adaptive-systems-2025",
         file: "/publications/2025/Weerheim2025.pdf",
       },
