@@ -13,7 +13,7 @@ export const publicationsByYear = PubsByYear.parse([
     year: "2025",
     publications: [
       {
-        title: "Dutch Nao Team - Technical Report",
+        title: "Dutch Nao Team - Team Report",
         authors: [
             "Vivienne Jansen",
             "Amanda Jansen",
