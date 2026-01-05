@@ -13,6 +13,34 @@ export const publicationsByYear = PubsByYear.parse([
     year: "2025",
     publications: [
       {
+        title: "Dutch Nao Team - Technical Report",
+        authors: [
+            "Vivienne Jansen",
+            "Amanda Jansen",
+            "Mark Honkoop",
+            "Julia Blaauboer",
+            "Macha Meijer",
+            "Marilene Oud",
+            "Rick van der Veen",
+            "Fiona Nagelhout",
+            "Harold Ruiter",
+            "Fyor Klein Gunnewiek",
+            "Kim Verkuijl",
+            "Dário Xavier Catarrinho",
+        ],
+        date: "2026-1-5",
+        year: "2026",
+        type: "techreport",
+        tags: ["Technical-Report"],
+        id: "techreport2025",
+        file: "/publications/2025/DNT_Team_Report_2025.pdf",
+      },
+    ],
+  },
+  {
+    year: "2025",
+    publications: [
+      {
         title: "Distillation Techniques for Network Reconstruction in Adaptive Systems",
         authors: [
           "Joost Weerheim",
