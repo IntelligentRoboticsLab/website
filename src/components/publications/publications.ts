@@ -32,7 +32,7 @@ export const publicationsByYear = PubsByYear.parse([
         year: "2026",
         type: "techreport",
         tags: ["Technical-Report"],
-        id: "techreport2025",
+        id: "teamreport2025",
         file: "/publications/2025/DNT_Team_Report_2025.pdf",
       },
     ],
