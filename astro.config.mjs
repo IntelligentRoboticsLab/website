@@ -63,5 +63,7 @@ export default defineConfig({
     sitemap(),
     mdx(),
   ],
-  adapter: vercel(),
+  adapter: vercel({
+    runtime: 'nodejs20.x'
+  }),
 });
