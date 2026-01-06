@@ -2,7 +2,6 @@
 import clsx from "clsx";
 import { getIsRtlFromUrl } from "../../languages";
 import { Frontmatter, SIDEBAR, SIDEBAR_HEADER_MAP } from "../../config";
-import Search from "./Search";
 import { checkLanding } from "../../utils/theme";
 
 export interface Props {
@@ -58,7 +57,6 @@ if (langCode !== "en") {
 ---
 
 <div class="mx-auto mb-6 ml--40 w-full px-6 md:ml-0 md:hidden md:px-8">
-  <Search isLanding={isLanding} client:idle />
 </div>
 <div
   id="mobile-filter-nav"
