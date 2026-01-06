@@ -29,7 +29,7 @@ export const publicationsByYear = PubsByYear.parse([
             "Dário Xavier Catarrinho",
             "Gijs de Jong",
         ],
-        date: "2026-1-5",
+        date: "2026-1-6",
         year: "2026",
         type: "techreport",
         tags: ["Technical-Report"],
