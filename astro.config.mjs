@@ -1,4 +1,3 @@
-import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -12,12 +11,15 @@ import remarkCodeTitles from "remark-code-titles";
 /**
  * @link https://astro.build/config
  */
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://dutchnaoteam.nl",
   output: "server",
+  image: {
+    domains: ["pbs.twimg.com"],
+  },
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
@@ -57,11 +59,10 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     sitemap(),
     mdx(),
   ],
-  adapter: vercel(),
+  adapter: vercel({
+    imageService: true,
+  }),
 });
