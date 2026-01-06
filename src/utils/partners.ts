@@ -1,5 +1,9 @@
 import type { Partner } from "../components/partnershipsPage/partners/types";
 import { PartnerLevels } from "../components/partnershipsPage/partners/types";
+import aufLogo from "../assets/partners/universiteitsfonds.png";
+import startupVillageLogo from "../assets/partners/startupvillage.png";
+import uvaLogo from "../assets/partners/uva.png";
+import zetaAlphaLogo from "../assets/partners/zetaalpha.png";
 
   // UNCOMMENT TO TEST THE DIFFERENT LEVELS
   export const PartnerListLevel1: Partner[] = [
@@ -10,7 +14,7 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       width: 120,
       height: 60,
       img_multiplier: 100,
-      logo: "/images/uva.png",
+      logo: uvaLogo,
       level: PartnerLevels.Platinum
     }
     ];
@@ -26,7 +30,7 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       width: 120,
       height: 10,
       img_multiplier: 200,
-      logo: "/images/universiteitsfonds.png",
+      logo: aufLogo,
       level: PartnerLevels.Silver
     }
     ];
@@ -39,7 +43,7 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       width: 120,
       height: 20,
       img_multiplier: 100,
-      logo: "/images/zetaalpha.png",
+      logo: zetaAlphaLogo,
       level: PartnerLevels.Bronze
     },
     {
@@ -49,7 +53,7 @@ import { PartnerLevels } from "../components/partnershipsPage/partners/types";
       width: 1394,
       height: 707,
       img_multiplier: 70,
-      logo: "/images/startupvillage.png",
+      logo: startupVillageLogo,
       level: PartnerLevels.Bronze
     }
     ];

@@ -1,4 +1,3 @@
-import image from "@astrojs/image";
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
@@ -18,6 +17,12 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   site: "https://dutchnaoteam.nl",
   output: "server",
+  image: {
+    service: {
+      entrypoint: "astro/assets/services/squoosh",
+    },
+    domains: ["pbs.twimg.com"],
+  },
   markdown: {
     remarkPlugins: [remarkCodeTitles],
     rehypePlugins: [
@@ -50,6 +55,9 @@ export default defineConfig({
     },
     extendDefaultPlugins: true,
   },
+  experimental: {
+    assets: true,
+  },
   integrations: [
     react(),
     tailwind({
@@ -57,13 +65,11 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    image({
-      serviceEntryPoint: "@astrojs/image/sharp",
-    }),
     sitemap(),
     mdx(),
   ],
   adapter: vercel({
-    runtime: 'nodejs20.x'
+    imageService: true,
+    runtime: "nodejs20.x",
   }),
 });

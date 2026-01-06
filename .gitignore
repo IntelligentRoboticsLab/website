@@ -1,5 +1,7 @@
 # build output
 dist/
+.astra/
+.vercel/
 
 # dependencies
 node_modules/
