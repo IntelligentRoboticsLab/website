@@ -1,6 +1,6 @@
 # build output
 dist/
-.astra/
+.astro/
 .vercel/
 
 # dependencies

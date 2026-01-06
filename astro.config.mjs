@@ -11,16 +11,13 @@ import remarkCodeTitles from "remark-code-titles";
 /**
  * @link https://astro.build/config
  */
-import vercel from "@astrojs/vercel/serverless";
+import vercel from "@astrojs/vercel";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://dutchnaoteam.nl",
   output: "server",
   image: {
-    service: {
-      entrypoint: "astro/assets/services/squoosh",
-    },
     domains: ["pbs.twimg.com"],
   },
   markdown: {
@@ -55,9 +52,6 @@ export default defineConfig({
     },
     extendDefaultPlugins: true,
   },
-  experimental: {
-    assets: true,
-  },
   integrations: [
     react(),
     tailwind({
@@ -70,6 +64,5 @@ export default defineConfig({
   ],
   adapter: vercel({
     imageService: true,
-    runtime: "nodejs20.x",
   }),
 });

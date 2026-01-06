@@ -4,7 +4,7 @@ import { ALGOLIA } from "../../config";
 import "../../styles/algolia/style.css";
 
 import { createPortal } from "react-dom";
-import { DocSearchModal, useDocSearchKeyboardEvents } from "@docsearch/react";
+import DocSearchPkg from "@docsearch/react";
 import clsx from "clsx";
 
 export default function Search({ isLanding }: { isLanding: boolean }) {
@@ -28,6 +28,7 @@ export default function Search({ isLanding }: { isLanding: boolean }) {
     [setIsOpen, setInitialQuery]
   );
 
+  const { DocSearchModal, useDocSearchKeyboardEvents } = DocSearchPkg;
   useDocSearchKeyboardEvents({
     isOpen,
     onOpen,
