@@ -3,6 +3,7 @@ import HeadCommon from "../components/headCommon.astro";
 import HeadSeo from "../components/headSeo.astro";
 import LeftSidebar from "../components/navigation/leftSidebar.astro";
 import Navbar from "../components/navigation/navbar.astro";
+import RebrandBanner from "../components/rebrandBanner.astro";
 import { SITE } from "../config";
 import "../styles/accessibility.css";
 import "../styles/algolia/style.css";
@@ -54,6 +55,7 @@ const { isNotFound } = Astro.props;
   <body class="min-h-screen bg-default">
     <JumpToContent />
     <Navbar isNotFound={isNotFound || false} />
+    <RebrandBanner />
     <aside id="grid-left" class="hidden" title="Site Navigation">
       <div class="fixed left-0 top-0 z-30 h-screen w-screen bg-default">
         <div class="fixed top-24 h-[calc(100%-96px)] w-full pb-16">
